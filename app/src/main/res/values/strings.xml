@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MyNews</string>
+    <string name="tab_top_stories">TOP STORIES</string>
+    <string name="tab_most_popular">MOST POPULAR</string>
+    <string name="tab_business">BUSINESS</string>
+
+    <string name="action_notifications">Notifications</string>
+    <string name="action_help">Help</string>
+    <string name="action_about">About</string>
+    <string name="action_search">Search</string>
 </resources>
