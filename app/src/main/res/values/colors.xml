@@ -3,7 +3,14 @@
     <color name="colorPrimary">#00BAD2</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="tabIndicatorColor">#FFEB3B</color>
+    <color name="tabNotSelectedColor">#80FFFFFF</color>
 
     <color name="colorHeader">#FF000000</color>
     <color name="colorDescription">#585858</color>
+
+    <!-- Toolbar Theme -->
+    <color name="toolbar_primaryColor">#FFFFFFFF</color>
+    <color name="toolbar_secondaryColor">#FF000000</color>
+
 </resources>
