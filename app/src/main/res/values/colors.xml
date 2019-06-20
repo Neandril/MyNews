@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Global colors -->
     <color name="colorPrimary">#00BAD2</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="tabIndicatorColor">#FFEB3B</color>
     <color name="tabNotSelectedColor">#80FFFFFF</color>
+    <color name="text_color">#FFFFFFFF</color>
 
+    <!-- Toolbar Theme (used in styles.xml) -->
+    <color name="toolbar_primaryColor">#FFFFFFFF</color>
+    <color name="toolbar_secondaryColor">#FF000000</color>
+
+    <!-- RecyclerView Item colors -->
     <color name="colorHeader">#FF000000</color>
     <color name="colorDescription">#585858</color>
 
-    <!-- Toolbar Theme -->
-    <color name="toolbar_primaryColor">#FFFFFFFF</color>
-    <color name="toolbar_secondaryColor">#FF000000</color>
+    <!-- Options colors -->
+    <color name="editText_search_field">#B37A7A7A</color>
 
 </resources>

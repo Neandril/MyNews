@@ -4,10 +4,24 @@
     <string name="tab_most_popular">MOST POPULAR</string>
     <string name="tab_business">BUSINESS</string>
 
+    <!-- Menu strings -->
     <string name="action_notifications">Notifications</string>
     <string name="action_help">Help</string>
     <string name="action_about">About</string>
     <string name="action_search">Search</string>
 
+    <!-- Strings used in options activity -->
+    <string name="search_query_term">Search query term</string>
+    <string name="beginDate">Begin Date</string>
+    <string name="endDate">End Date</string>
+    <string name="checkbox_arts">Arts</string>
+    <string name="checkbox_politics">Politics</string>
+    <string name="checkbox_business">Business</string>
+    <string name="checkbox_sports">Sports</string>
+    <string name="checkbox_entrepreneurs">Entrepreneurs</string>
+    <string name="checkbox_travel">Travel</string>
+    <string name="button_search">SEARCH</string>
+
+    <!-- New York Times API Key -->
     <string name="apikey">aavEEACpR0OtOS8i70CKwCsNJorFyfFf</string>
 </resources>
