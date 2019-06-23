@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "My News"
+        supportActionBar?.title = getString(R.string.app_name)
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         val viewPager: ViewPager = findViewById(R.id.view_pager)
         viewPager.adapter = sectionsPagerAdapter
@@ -46,6 +46,8 @@ class MainActivity : AppCompatActivity() {
         }
         R.id.action_notification -> {
             Toast.makeText(this, "Notifications clicked", Toast.LENGTH_LONG).show()
+            val intent = Intent(this,NotificationsActivity::class.java)
+            startActivity(intent)
             true
         }
         R.id.action_help -> {

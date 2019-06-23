@@ -18,5 +18,6 @@
 
     <!-- Options colors -->
     <color name="editText_search_field">#B37A7A7A</color>
+    <color name="separator">#B3AAAAAA</color>
 
 </resources>

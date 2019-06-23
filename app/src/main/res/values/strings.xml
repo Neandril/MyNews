@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">MyNews</string>
+    <string name="app_name">My News</string>
     <string name="tab_top_stories">TOP STORIES</string>
     <string name="tab_most_popular">MOST POPULAR</string>
     <string name="tab_business">BUSINESS</string>
+    <string name="search_articles">Search Articles</string>
+    <string name="notifications">Notifications</string>
 
     <!-- Menu strings -->
     <string name="action_notifications">Notifications</string>
@@ -21,7 +23,9 @@
     <string name="checkbox_entrepreneurs">Entrepreneurs</string>
     <string name="checkbox_travel">Travel</string>
     <string name="button_search">SEARCH</string>
+    <string name="notifications_switch">Enable notifications (once per day)</string>
 
     <!-- New York Times API Key -->
+    <!-- TODO To delete -->
     <string name="apikey">aavEEACpR0OtOS8i70CKwCsNJorFyfFf</string>
 </resources>

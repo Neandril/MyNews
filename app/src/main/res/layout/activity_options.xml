@@ -22,32 +22,56 @@
             android:layout_margin="8dp" />
 
         <LinearLayout
-            android:id="@+id/calendars"
+            android:id="@+id/layout_dates"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/beginDate"
+            <LinearLayout
+                android:id="@+id/layout_begindate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:hint="@string/beginDate"
-                android:layout_margin="8dp" />
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/endDate"
+                <TextView
+                    android:id="@+id/texteview_begin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/beginDate" />
+
+                <Spinner
+                    android:id="@+id/spinner_begin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_enddate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:hint="@string/endDate"
-                android:layout_margin="8dp" />
+                android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/textview_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/beginDate" />
+
+                <Spinner
+                    android:id="@+id/spinner_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/checkboxes"
+            android:id="@+id/layout_checkboxes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -119,6 +143,28 @@
             android:text="@string/button_search"
             android:background="@color/colorPrimary"
             android:textColor="@color/text_color"/>
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="8dp"
+            android:background="@color/separator" />
+
+        <LinearLayout
+            android:id="@+id/layout_notifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/notifications_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:checked="true"
+                android:text="@string/notifications_switch" />
+        </LinearLayout>
 
 
     </LinearLayout>
