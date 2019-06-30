@@ -28,6 +28,5 @@ class NotificationsActivity : AppCompatActivity() {
 
         searchBtn.visibility = View.GONE
         dates.visibility = View.GONE
-
     }
 }
