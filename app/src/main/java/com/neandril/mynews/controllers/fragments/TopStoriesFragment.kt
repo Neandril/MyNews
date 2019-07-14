@@ -1,14 +1,15 @@
 package com.neandril.mynews.controllers.fragments
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.RelativeLayout
 import android.widget.Toast
 import com.neandril.mynews.R
 import com.neandril.mynews.api.ApiCall
@@ -20,27 +21,44 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class TopStoriesFragment : Fragment() {
 
     /** Array of news */
-    private var dataList : ArrayList<Article> = ArrayList()
+    private var dataList : MutableList<Article> = mutableListOf()
     /** Defining the RecyclerView */
     lateinit var recyclerView: RecyclerView
     lateinit var progressBar: ProgressBar
+    lateinit var loadingPanel: RelativeLayout
+    lateinit var mAdapter: DataAdpter
+    lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = container?.inflate(R.layout.fragment_topstories)
 
-        progressBar = view!!.findViewById(R.id.progress)
+        loadingPanel = view!!.findViewById(R.id.loadingPanel)
+        loadingPanel.visibility = View.VISIBLE
+        mSwipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
 
-        recyclerView = view!!.findViewById(R.id.topStories_RecyclerView)
+        recyclerView = view.findViewById(R.id.topStories_RecyclerView)
         recyclerView.setHasFixedSize(true) // For improve performances
-        recyclerView.adapter = DataAdpter(dataList, activity!!.applicationContext)
+        mAdapter = DataAdpter(dataList, activity!!.applicationContext)
+        recyclerView.adapter = mAdapter
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         getData()
 
+        mSwipeRefreshLayout.setOnRefreshListener {
+            // Refresh items
+            getData()
+        }
+
         return view
+    }
+
+    fun onItemsLoadComplete() {
+        // Stop refresh animation
+        mSwipeRefreshLayout.isRefreshing = false
     }
 
     /**
@@ -52,10 +70,11 @@ class TopStoriesFragment : Fragment() {
             /** Handle responses */
             override fun onResponse(call: Call<NYTModel>?, response: Response<NYTModel>?) {
                 /** If at least one item is received, populate the list */
-                if(response?.body()?.articles != null){
-                    progressBar.visibility = View.GONE
-                    dataList.addAll(response.body()!!.articles!!.asIterable())
+                if(response?.body()?.mArticles != null){
+                    loadingPanel.visibility = View.GONE
+                    mAdapter.setData(response.body()?.mArticles ?: listOf())
                 }
+                onItemsLoadComplete()
             }
 
             /** Handle failure */

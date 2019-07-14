@@ -10,7 +10,7 @@ import android.widget.TextView
 import com.neandril.mynews.R
 import com.neandril.mynews.models.Article
 
-class DataAdpter(private var dataList: ArrayList<Article>, private val context: Context) : RecyclerView.Adapter<DataAdpter.ViewHolder>() {
+class DataAdpter(private var dataList: MutableList<Article>, private val context: Context) : RecyclerView.Adapter<DataAdpter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,7 +22,7 @@ class DataAdpter(private var dataList: ArrayList<Article>, private val context: 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val dataModel=dataList.get(position)
+        val dataModel= dataList[position]
 
         Log.e("Adapter", "Titre : " + dataModel.section)
 
@@ -30,10 +30,15 @@ class DataAdpter(private var dataList: ArrayList<Article>, private val context: 
         holder.descTextView.text = dataModel.title
     }
 
-
     class ViewHolder(itemLayoutView: View) : RecyclerView.ViewHolder(itemLayoutView) {
         var titleTextView: TextView = itemLayoutView.findViewById(R.id.title)
         var descTextView: TextView = itemLayoutView.findViewById(R.id.description)
     }
 
+    fun setData(articles: List<Article>) {
+        dataList.clear()
+        dataList.addAll(articles)
+
+        notifyDataSetChanged()
+    }
 }

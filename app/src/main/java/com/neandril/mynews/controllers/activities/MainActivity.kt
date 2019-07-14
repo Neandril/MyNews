@@ -30,9 +30,6 @@ class MainActivity : AppCompatActivity() {
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
 
-        if (savedInstanceState == null) {
-            changeFragment(TopStoriesFragment())
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

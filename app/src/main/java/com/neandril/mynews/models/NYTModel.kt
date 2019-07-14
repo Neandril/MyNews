@@ -21,10 +21,7 @@ class NYTModel {
     var numResults: Int? = null
     @SerializedName(value = "results")
     @Expose
-    private var mArticles: ArrayList<Article>? = null
-
-    val articles: List<Article>?
-        get() = mArticles
+    var mArticles: List<Article> = listOf()
 
     fun setArticles(articles: ArrayList<Article>) {
         this.mArticles = articles
