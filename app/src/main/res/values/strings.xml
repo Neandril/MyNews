@@ -2,7 +2,7 @@
     <string name="app_name">My News</string>
     <string name="tab_top_stories">TOP STORIES</string>
     <string name="tab_most_popular">MOST POPULAR</string>
-    <string name="tab_business">BUSINESS</string>
+    <string name="tab_interest">SCIENCE</string>
     <string name="search_articles">Search Articles</string>
     <string name="notifications">Notifications</string>
     <string name="section_separator">&gt;</string>

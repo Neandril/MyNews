@@ -1,7 +1,6 @@
 package com.neandril.mynews.views.adapter
 
 import android.content.Context
-import android.provider.Settings.Global.getString
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,11 +11,11 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.neandril.mynews.R
 import com.neandril.mynews.models.Article
-import java.text.ParseException
-import java.text.SimpleDateFormat
 
 
 class DataAdpter(private var dataList: MutableList<Article>, private val context: Context) : RecyclerView.Adapter<DataAdpter.ViewHolder>() {
+
+    lateinit var mClickListener: ClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.fragment_item, parent, false))
@@ -53,11 +52,31 @@ class DataAdpter(private var dataList: MutableList<Article>, private val context
         }
     }
 
-    class ViewHolder(itemLayoutView: View) : RecyclerView.ViewHolder(itemLayoutView) {
+    fun setOnItemClickListener(aClickListener: ClickListener) {
+        mClickListener = aClickListener
+    }
+
+    interface ClickListener {
+        fun onClick(pos: Int, aView: View)
+    }
+
+
+    inner class ViewHolder(itemLayoutView: View) : RecyclerView.ViewHolder(itemLayoutView), View.OnClickListener {
         var titleTextView: TextView = itemLayoutView.findViewById(R.id.title)
         var descTextView: TextView = itemLayoutView.findViewById(R.id.description)
         var publishedDate: TextView = itemLayoutView.findViewById(R.id.date)
         var thumbnail: ImageView = itemLayoutView.findViewById(R.id.thumbnail)
+
+        override fun onClick(v: View) {
+            mClickListener.onClick(adapterPosition, v)
+            val dataModel = dataList[adapterPosition]
+            val articleUrl = dataModel.url
+            Log.e("Adapter", "Clicked: $articleUrl")
+        }
+
+        init {
+            itemView.setOnClickListener(this)
+        }
     }
 
     fun setData(articles: List<Article>) {
@@ -66,4 +85,5 @@ class DataAdpter(private var dataList: MutableList<Article>, private val context
 
         notifyDataSetChanged()
     }
+
 }

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.Toast
@@ -47,6 +48,12 @@ class TopStoriesFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         getData()
+
+        mAdapter.setOnItemClickListener(object: DataAdpter.ClickListener {
+            override fun onClick(pos: Int, aView: View) {
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+            }
+        })
 
         mSwipeRefreshLayout.setOnRefreshListener {
             // Refresh items

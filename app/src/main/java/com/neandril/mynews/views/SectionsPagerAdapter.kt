@@ -5,14 +5,14 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.neandril.mynews.R
-import com.neandril.mynews.controllers.fragments.BusinessFragment
+import com.neandril.mynews.controllers.fragments.PointofInterestFragment
 import com.neandril.mynews.controllers.fragments.MostPopularFragment
 import com.neandril.mynews.controllers.fragments.TopStoriesFragment
 
 private val TAB_TITLES = arrayOf(
     R.string.tab_top_stories,
     R.string.tab_most_popular,
-    R.string.tab_business
+    R.string.tab_interest
 )
 
 /**
@@ -32,7 +32,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) : 
             }
             2 -> {
                 // val movieFragment = MovieFragment()
-                BusinessFragment()
+                PointofInterestFragment()
             }
             else -> null
         }
