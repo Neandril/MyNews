@@ -16,6 +16,6 @@ interface ApiInterface {
         const val API_BASE_URL = "https://api.nytimes.com/svc/"
     }
 
-    @GET("topstories/v2/home.json")
+    @GET("topstories/v2/world.json")
     fun topStories(): Call<NYTModel>
 }

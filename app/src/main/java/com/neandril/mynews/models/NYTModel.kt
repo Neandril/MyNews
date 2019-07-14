@@ -40,6 +40,7 @@ class Article(
     var publishedDate: String?, @field:SerializedName(value = "section", alternate = ["section_name"])
     @field:Expose
     var section: String?
+
 ) {
 
     @SerializedName(value = "url", alternate = ["web_url"])

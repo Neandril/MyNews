@@ -5,6 +5,8 @@
     <string name="tab_business">BUSINESS</string>
     <string name="search_articles">Search Articles</string>
     <string name="notifications">Notifications</string>
+    <string name="section_separator">&gt;</string>
+    <string name="resource_id">"The Page Currently Selected is %d$1"</string>
 
     <!-- Menu strings -->
     <string name="action_notifications">Notifications</string>
