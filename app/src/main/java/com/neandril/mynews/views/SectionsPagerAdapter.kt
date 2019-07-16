@@ -5,14 +5,16 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.neandril.mynews.R
-import com.neandril.mynews.controllers.fragments.PointofInterestFragment
+import com.neandril.mynews.controllers.fragments.ScienceFragment
 import com.neandril.mynews.controllers.fragments.MostPopularFragment
+import com.neandril.mynews.controllers.fragments.TechnologyFragment
 import com.neandril.mynews.controllers.fragments.TopStoriesFragment
 
 private val TAB_TITLES = arrayOf(
     R.string.tab_top_stories,
     R.string.tab_most_popular,
-    R.string.tab_interest
+    R.string.tab_science,
+    R.string.tab_technology
 )
 
 /**
@@ -24,15 +26,16 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) : 
     override fun getItem(position: Int): Fragment? {
         return when (position) {
             0 -> {
-                //  val homeFragment: HomeFragment = HomeFragment()
                 TopStoriesFragment()
             }
             1 -> {
                 MostPopularFragment()
             }
             2 -> {
-                // val movieFragment = MovieFragment()
-                PointofInterestFragment()
+                ScienceFragment()
+            }
+            3 -> {
+                TechnologyFragment()
             }
             else -> null
         }
@@ -46,7 +49,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) : 
     }
 
     override fun getCount(): Int {
-        // Show 2 total pages.
-        return 3
+        // Show 3 total pages.
+        return 4
     }
 }

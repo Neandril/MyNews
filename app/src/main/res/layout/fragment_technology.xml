@@ -11,6 +11,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:textSize="20sp"
-        android:text="Point of Interest" />
+        android:text="Fragment Technology" />
 
 </FrameLayout>

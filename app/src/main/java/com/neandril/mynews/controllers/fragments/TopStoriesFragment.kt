@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,7 @@ import com.neandril.mynews.api.ApiCall
 import com.neandril.mynews.models.Article
 import com.neandril.mynews.models.NYTModel
 import com.neandril.mynews.utils.inflate
-import com.neandril.mynews.views.adapter.DataAdpter
+import com.neandril.mynews.views.adapter.TopStoriesAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,9 +30,8 @@ class TopStoriesFragment : Fragment() {
     private var dataList : MutableList<Article> = mutableListOf()
     /** Defining the RecyclerView */
     lateinit var recyclerView: RecyclerView
-    lateinit var progressBar: ProgressBar
     lateinit var loadingPanel: RelativeLayout
-    lateinit var mAdapter: DataAdpter
+    lateinit var mAdapter: TopStoriesAdapter
     lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -43,13 +43,13 @@ class TopStoriesFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.topStories_RecyclerView)
         recyclerView.setHasFixedSize(true) // For improve performances
-        mAdapter = DataAdpter(dataList, activity!!.applicationContext)
+        mAdapter = TopStoriesAdapter(dataList, activity!!.applicationContext)
         recyclerView.adapter = mAdapter
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         getData()
 
-        mAdapter.setOnItemClickListener(object: DataAdpter.ClickListener {
+        mAdapter.setOnItemClickListener(object: TopStoriesAdapter.ClickListener {
             override fun onClick(pos: Int, aView: View) {
                 Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
             }

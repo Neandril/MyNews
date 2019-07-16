@@ -16,6 +16,21 @@ interface ApiInterface {
         const val API_BASE_URL = "https://api.nytimes.com/svc/"
     }
 
+    /**
+     * TopStories API
+     */
     @GET("topstories/v2/world.json")
     fun topStories(): Call<NYTModel>
+
+    @GET("topstories/v2/science.json")
+    fun science(): Call<NYTModel>
+
+    @GET("topstories/v2/technology.json")
+    fun technology(): Call<NYTModel>
+
+    /**
+     * MostPopular API
+     */
+    @GET("mostpopular/v2/viewed/1.json")
+    fun mostPopular(): Call<NYTModel>
 }
