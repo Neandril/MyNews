@@ -1,38 +1,53 @@
 package com.neandril.mynews.controllers.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
-import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.Toast
 import com.neandril.mynews.R
 import com.neandril.mynews.api.ApiCall
-import com.neandril.mynews.models.Article
-import com.neandril.mynews.models.NYTModel
+import com.neandril.mynews.controllers.activities.WebviewActivity
+import com.neandril.mynews.models.*
 import com.neandril.mynews.utils.inflate
-import com.neandril.mynews.views.adapter.TopStoriesAdapter
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.neandril.mynews.views.adapter.DataAdapter
 
+class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
 
-class TopStoriesFragment : Fragment() {
+    override fun onClick(article: Article) {
+        val articleUrl = article.url
+        val articleTitle = article.title
+
+        val intent = Intent(context, WebviewActivity::class.java)
+
+        intent.putExtra("url", articleUrl)
+        intent.putExtra("title", articleTitle)
+        activity?.startActivity(intent)
+    }
 
     /** Array of news */
     private var dataList : MutableList<Article> = mutableListOf()
     /** Defining the RecyclerView */
     lateinit var recyclerView: RecyclerView
     lateinit var loadingPanel: RelativeLayout
-    lateinit var mAdapter: TopStoriesAdapter
+    lateinit var mAdapter: DataAdapter
     lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
+    private val repository: ArticleRepositoryInt by lazy {
+/*        object : ArticleRepositoryInt {
+        override fun getTopStoriesData(callback: ArticleCallback) {
+            val model = NYTModel()
+            model.setArticles(arrayListOf(Article("Il fait chaud à Paris", "2019-07-20T05:10:00-04:00", "global")))
+            callback.onResponse(model)
+        }}*/
+
+        ArticleRepositoryImplement(ApiCall.getInstance())
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = container?.inflate(R.layout.fragment_topstories)
@@ -43,17 +58,12 @@ class TopStoriesFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.topStories_RecyclerView)
         recyclerView.setHasFixedSize(true) // For improve performances
-        mAdapter = TopStoriesAdapter(dataList, activity!!.applicationContext)
+        mAdapter = DataAdapter(dataList, activity!!.applicationContext)
+        mAdapter.setOnItemClickListener(this)
         recyclerView.adapter = mAdapter
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         getData()
-
-        mAdapter.setOnItemClickListener(object: TopStoriesAdapter.ClickListener {
-            override fun onClick(pos: Int, aView: View) {
-                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
-            }
-        })
 
         mSwipeRefreshLayout.setOnRefreshListener {
             // Refresh items
@@ -72,21 +82,16 @@ class TopStoriesFragment : Fragment() {
      * Fetch data from the API
      */
     private fun getData() {
-        val apiCall = ApiCall.getInstance()
-        apiCall?.topStories()?.enqueue(object : Callback<NYTModel> {
-            /** Handle responses */
-            override fun onResponse(call: Call<NYTModel>?, response: Response<NYTModel>?) {
-                /** If at least one item is received, populate the list */
-                if(response?.body()?.mArticles != null){
+        repository.getTopStoriesData(object : ArticleCallback {
+            override fun onResponse(model: NYTModel?) {
+                if (model == null) {
+                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                } else {
+                    /** If at least one item is received, populate the list */
                     loadingPanel.visibility = View.GONE
-                    mAdapter.setData(response.body()?.mArticles ?: listOf())
+                    mAdapter.setData(model.mArticles)
+                    onItemsLoadComplete()
                 }
-                onItemsLoadComplete()
-            }
-
-            /** Handle failure */
-            override fun onFailure(call: Call<NYTModel>?, t: Throwable?) {
-                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
             }
         })
     }
