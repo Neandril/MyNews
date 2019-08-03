@@ -8,7 +8,13 @@ import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
+import android.support.test.espresso.contrib.RecyclerViewActions
+import android.view.View
+import android.widget.Toast
+import com.neandril.mynews.api.ApiCall
 import com.neandril.mynews.controllers.activities.MainActivity
+import com.neandril.mynews.models.*
+import com.neandril.mynews.views.adapter.DataAdapter
 import org.hamcrest.CoreMatchers.not
 import org.junit.Before
 import org.junit.Rule
@@ -50,14 +56,10 @@ class MainActivityTest {
      */
     @Test @Throws (Exception::class)
     fun buttonSearch_OpenSearchActivity() {
-        onView(withId(R.id.action_search))
-            .check(matches(isDisplayed()))
-        onView(withId(R.id.action_search))
-            .perform(click())
-        onView(withId(R.id.editText_search_query))
-            .check(matches(isDisplayed()))
-        onView(withId(R.id.notifications_switch))
-            .check(matches(not(isDisplayed())))
+        onView(withId(R.id.action_search)).check(matches(isDisplayed()))
+        onView(withId(R.id.action_search)).perform(click())
+        onView(withId(R.id.editText_search_query)).check(matches(isDisplayed()))
+        onView(withId(R.id.notifications_switch)).check(matches(not(isDisplayed())))
     }
 
     /**
@@ -67,5 +69,14 @@ class MainActivityTest {
     fun buttonNotifications_OpenNotificationsActivity() {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext())
         onView(withText(mActivity.getString(R.string.notifications))).perform(click())
+    }
+
+    /**
+     * Test if itemclick on the recyclerview first item works
+     */
+    @Test
+    fun recyclerViewItemClick() {
+        onView(withId(R.id.topStories_RecyclerView)).perform(RecyclerViewActions.actionOnItemAtPosition<DataAdapter.ViewHolder>(1, click()))
+        onView(withId(R.id.webview)).check(matches(isDisplayed()))
     }
 }

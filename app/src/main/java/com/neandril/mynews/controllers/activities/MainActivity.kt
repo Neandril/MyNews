@@ -13,7 +13,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.neandril.mynews.R
-import com.neandril.mynews.controllers.fragments.TopStoriesFragment
 import com.neandril.mynews.views.SectionsPagerAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -45,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_search -> {
             Toast.makeText(this, "Search clicked", Toast.LENGTH_LONG).show()
-            val intent = Intent(this, OptionsActivity::class.java)
+            val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
             true
         }

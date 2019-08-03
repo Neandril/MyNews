@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,9 +21,9 @@ import com.neandril.mynews.views.adapter.DataAdapter
 
 class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
 
-    override fun onClick(article: Article) {
-        val articleUrl = article.url
-        val articleTitle = article.title
+    override fun onClick(articles: Article) {
+        val articleUrl = articles.url
+        val articleTitle = articles.title
 
         val intent = Intent(context, WebviewActivity::class.java)
 
@@ -38,13 +39,16 @@ class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
     lateinit var loadingPanel: RelativeLayout
     lateinit var mAdapter: DataAdapter
     lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
+
     private val repository: ArticleRepositoryInt by lazy {
-/*        object : ArticleRepositoryInt {
+        /*
+        object : ArticleRepositoryInt {
         override fun getTopStoriesData(callback: ArticleCallback) {
             val model = NYTModel()
             model.setArticles(arrayListOf(Article("Il fait chaud à Paris", "2019-07-20T05:10:00-04:00", "global")))
             callback.onResponse(model)
-        }}*/
+        }}
+        */
 
         ArticleRepositoryImplement(ApiCall.getInstance())
     }

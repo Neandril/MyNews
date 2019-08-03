@@ -8,7 +8,6 @@
     <string name="notifications">Notifications</string>
     <string name="dateformat">%1$s/%2$s/%3$s</string>
 
-
     <!-- Menu strings -->
     <string name="action_notifications">Notifications</string>
     <string name="action_help">Help</string>
@@ -27,6 +26,10 @@
     <string name="checkbox_travel">Travel</string>
     <string name="button_search">SEARCH</string>
     <string name="notifications_switch">Enable notifications (once per day)</string>
+    <string name="alertDialogTitle">Information</string>
+    <string name="alertDialogText">No result were found</string>
+    <string name="alertDialogButton">Back</string>
+    <string name="urlPrefix">https://static01.nyt.com/</string>
 
     <!-- New York Times API Key -->
     <!-- TODO To delete -->

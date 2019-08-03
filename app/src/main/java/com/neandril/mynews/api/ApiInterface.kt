@@ -1,8 +1,11 @@
 package com.neandril.mynews.api
 
+import com.bumptech.glide.load.engine.bitmap_recycle.IntegerArrayAdapter
 import com.neandril.mynews.models.NYTModel
+import com.neandril.mynews.models.NYTSearchResultsModel
 import retrofit2.http.GET
 import retrofit2.Call
+import retrofit2.http.Query
 
 /**
  * Interface for the NYT APIs
@@ -33,4 +36,16 @@ interface ApiInterface {
      */
     @GET("mostpopular/v2/viewed/1.json")
     fun mostPopular(): Call<NYTModel>
+
+    /**
+     * Article Search API
+     */
+    @GET("search/v2/articlesearch.json")
+    fun articleSearch(
+        @Query("q") query: String,
+        @Query("begin_date") beginDate: String,
+        @Query("end_date") endDate: String,
+        @Query("fq") sections: String,
+        @Query("sort") sort: String
+    ): Call<NYTSearchResultsModel>
 }
