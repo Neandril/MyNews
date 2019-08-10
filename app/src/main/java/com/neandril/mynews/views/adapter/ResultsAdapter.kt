@@ -26,7 +26,6 @@ class ResultsAdapter(private var dataList: MutableList<Doc>, private val context
     }
 
     override fun getItemCount(): Int {
-        Log.e("Results", "itemCount : " + dataList.size)
         return dataList.size
     }
 
@@ -85,10 +84,19 @@ class ResultsAdapter(private var dataList: MutableList<Doc>, private val context
      * The list is cleared each time, to prevent duplications
      */
     fun setData(articles: List<Doc>) {
+
+        val size = articles.size
+
         dataList.clear()
         dataList.addAll(articles)
 
-        notifyDataSetChanged()
+        val sizeNew = articles.size
+
+        Log.e("ResultsAdapter", "size : $size, sizeNew : $sizeNew")
+
+        // notifyDataSetChanged()
+
+        notifyItemRangeChanged(size, sizeNew)
 
         if (dataList.size == 0) {
             Log.e("Results", "empty")

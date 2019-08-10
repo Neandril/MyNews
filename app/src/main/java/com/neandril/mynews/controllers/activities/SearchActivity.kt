@@ -9,7 +9,10 @@ import android.view.View
 import android.widget.*
 import com.neandril.mynews.R
 import com.neandril.mynews.utils.paddingZero
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.util.*
+
 
 class SearchActivity : AppCompatActivity() {
 
@@ -32,7 +35,7 @@ class SearchActivity : AppCompatActivity() {
         val notifs = findViewById<LinearLayout>(R.id.layout_notifications)
         val beginDate = findViewById<TextView>(R.id.begin_date)
         val endDate = findViewById<TextView>(R.id.end_date)
-        val searchButton = findViewById<Button>(R.id.button_search)
+        val searchButton = findViewById<Button>(com.neandril.mynews.R.id.button_search)
 
         /** Calendar config */
         val calendar = Calendar.getInstance()
@@ -58,8 +61,9 @@ class SearchActivity : AppCompatActivity() {
             val datePickerDialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener
             { _, year, month, dayOfMonth ->
                 val pickedMonth = (month + 1).paddingZero()
-                beginDate.text = "${dayOfMonth.paddingZero()}/$pickedMonth/$year"
+                beginDate.text = getString(R.string.datesTexts, dayOfMonth.paddingZero(), pickedMonth, year)
                 bDate = "$year$pickedMonth${dayOfMonth.paddingZero()}"
+
             }, year, month, day)
             datePickerDialog.show()
         }
@@ -69,8 +73,9 @@ class SearchActivity : AppCompatActivity() {
             val datePickerDialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener
             { _, year, month, dayOfMonth ->
                 val pickedMonth = (month + 1).paddingZero()
-                endDate.text = "${dayOfMonth.paddingZero()}/$pickedMonth/$year"
+                endDate.text = getString(R.string.datesTexts, dayOfMonth.paddingZero(), pickedMonth, year)
                 eDate = "$year$pickedMonth${dayOfMonth.paddingZero()}"
+
             }, year, month, day)
             datePickerDialog.show()
         }
@@ -87,15 +92,19 @@ class SearchActivity : AppCompatActivity() {
             getCheckedSections()
 
             if (query == "") {
-                Toast.makeText(applicationContext, "Please enter a keyword", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, R.string.enterKeyword, Toast.LENGTH_LONG).show()
             } else {
                 if (isSelectionsValid()) {
-                    mQueryItems.addAll(listOf(query, bDate, eDate, sectionName))
-                    Log.e("Search", "Query : $query")
-                    intent.putStringArrayListExtra("query", mQueryItems)
-                    startActivity(intent)
+                    if (eDate < bDate) {
+                        Toast.makeText(applicationContext, R.string.verifyDates, Toast.LENGTH_LONG).show()
+                    } else {
+                        mQueryItems.addAll(listOf(query, bDate, eDate, sectionName, "0"))
+                        Log.e("Search", "Query : $query")
+                        intent.putStringArrayListExtra("query", mQueryItems)
+                        startActivity(intent)
+                    }
                 } else {
-                    Toast.makeText(applicationContext, "Please choose at least one category", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, R.string.chooseCategory, Toast.LENGTH_LONG).show()
                 }
             }
         }

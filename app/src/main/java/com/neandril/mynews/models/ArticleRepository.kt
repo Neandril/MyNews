@@ -81,8 +81,8 @@ class ArticleRepositoryImplement(private val service: ApiInterface?): ArticleRep
 
 class SearchRepositoryImplement(private val service: ApiInterface?, private val query : ArrayList<String>): SearchRepositoryInt {
     override fun getSearchData(callback: SearchCallback) {
-        Log.e("Repository", "Query : " + query[0] + " bDate" + query[1] + " eDate" + query[2] + " section" + query[3])
-        service?.articleSearch(query[0], query[1], query[2], query[3], "newest")?.enqueue(object : Callback<NYTSearchResultsModel> {
+        Log.e("Repository", "Query : " + query[0] + " bDate " + query[1] + " eDate " + query[2] + " section " + query[3] + " page " + query[4])
+        service?.articleSearch(query[0], query[1], query[2], query[3], query[4].toInt(), "newest")?.enqueue(object : Callback<NYTSearchResultsModel> {
             /** Handle responses */
             override fun onResponse(call: Call<NYTSearchResultsModel>?, response: Response<NYTSearchResultsModel>?) {
                 Log.e("Repository", response?.body().toString())

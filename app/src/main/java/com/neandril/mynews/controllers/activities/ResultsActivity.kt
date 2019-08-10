@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.neandril.mynews.R
 import com.neandril.mynews.api.ApiCall
 import com.neandril.mynews.models.*
+import com.neandril.mynews.utils.PaginationScrollListener
 import com.neandril.mynews.views.adapter.ResultsAdapter
 import kotlinx.android.synthetic.main.activity_results.*
 
@@ -33,6 +34,9 @@ class ResultsActivity: AppCompatActivity(), ResultsAdapter.ClickListener {
     lateinit var recyclerView: RecyclerView
     private lateinit var mAdapter: ResultsAdapter
 
+    var isLastPage: Boolean = false
+    var isLoading: Boolean = false
+
     private val repository: SearchRepositoryImplement by lazy {
         /*
         object : ArticleRepositoryInt {
@@ -52,6 +56,21 @@ class ResultsActivity: AppCompatActivity(), ResultsAdapter.ClickListener {
         linearLayoutManager = LinearLayoutManager(this)
         recyclerView = findViewById(R.id.results_recyclerView)
         recyclerView.layoutManager = linearLayoutManager
+
+        recyclerView.addOnScrollListener(object : PaginationScrollListener(linearLayoutManager) {
+            override fun isLastPage(): Boolean {
+                return isLastPage
+            }
+
+            override fun isLoading(): Boolean {
+                return isLoading
+            }
+
+            override fun loadMoreItems() {
+                isLoading = true
+                //you have to call loadmore items to get more data
+            }
+        })
 
         mAdapter = ResultsAdapter(dataList, this)
         mAdapter.setOnItemClickListener(this)
@@ -76,6 +95,24 @@ class ResultsActivity: AppCompatActivity(), ResultsAdapter.ClickListener {
                 }
             }
         })
+
+        isLoading = false
+    }
+
+    fun getMoreItems() {
+        Log.e("getMoreItems", "isLoading : $isLoading" )
+        repository.getSearchData(object : SearchCallback {
+            override fun onResponse(model: NYTSearchResultsModel?) {
+                //Log.e("Result", "results : " + model?.results)
+                if (model == null) {
+                    Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
+                } else {
+                    /** If at least one item is received, populate the list */
+                    mAdapter.setData(model.results.docs)
+                }
+            }
+        })
+        isLoading = false
     }
 
     fun finishMe() {
