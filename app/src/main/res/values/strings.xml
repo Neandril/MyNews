@@ -34,6 +34,8 @@
     <string name="alertDialogButton">Back</string>
     <string name="urlPrefix">https://static01.nyt.com/</string>
     <string name="datesTexts">%1$s/%2$s/%3$d</string>
+    <string name="notificationsEnabled">Notifications are enabled</string>
+    <string name="notificationsDisabled">Notification are disabled</string>
 
     <!-- New York Times API Key -->
     <!-- TODO To delete -->

@@ -46,7 +46,11 @@ class ResultsActivity: AppCompatActivity(), ResultsAdapter.ClickListener {
             callback.onResponse(model)
         }}
         */
-        SearchRepositoryImplement(ApiCall.getInstance(), intent.getStringArrayListExtra("query"))
+        SearchRepositoryImplement(ApiCall.getInstance())
+    }
+
+    private val query : ArrayList<String> by lazy {
+        intent.getStringArrayListExtra("query")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,8 +71,9 @@ class ResultsActivity: AppCompatActivity(), ResultsAdapter.ClickListener {
             }
 
             override fun loadMoreItems() {
+                query[4] = (query[4].toInt() + 1).toString()
+                getData()
                 isLoading = true
-                //you have to call loadmore items to get more data
             }
         })
 
@@ -83,7 +88,11 @@ class ResultsActivity: AppCompatActivity(), ResultsAdapter.ClickListener {
      * Fetch data from the API
      */
     private fun getData() {
-        repository.getSearchData(object : SearchCallback {
+        repository.getSearchData(query, object : SearchCallback {
+            override fun onError(message: String) {
+                Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+            }
+
             override fun onResponse(model: NYTSearchResultsModel?) {
                 //Log.e("Result", "results : " + model?.results)
                 if (model == null) {
@@ -93,26 +102,9 @@ class ResultsActivity: AppCompatActivity(), ResultsAdapter.ClickListener {
                     loadingPanel.visibility = View.GONE
                     mAdapter.setData(model.results.docs)
                 }
+                isLoading = false
             }
         })
-
-        isLoading = false
-    }
-
-    fun getMoreItems() {
-        Log.e("getMoreItems", "isLoading : $isLoading" )
-        repository.getSearchData(object : SearchCallback {
-            override fun onResponse(model: NYTSearchResultsModel?) {
-                //Log.e("Result", "results : " + model?.results)
-                if (model == null) {
-                    Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
-                } else {
-                    /** If at least one item is received, populate the list */
-                    mAdapter.setData(model.results.docs)
-                }
-            }
-        })
-        isLoading = false
     }
 
     fun finishMe() {

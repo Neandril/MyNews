@@ -8,8 +8,6 @@ import android.support.v7.widget.RecyclerView
  */
 abstract class PaginationScrollListener
 /**
- * Supporting only LinearLayoutManager for now.
- *
  * @param layoutManager
  */
     (var layoutManager: LinearLayoutManager) : RecyclerView.OnScrollListener() {
@@ -28,7 +26,7 @@ abstract class PaginationScrollListener
         if (!isLoading() && !isLastPage()) {
             if (visibleItemCount + firstVisibleItemPosition >= totalItemCount && firstVisibleItemPosition >= 0) {
                 loadMoreItems()
-            }//                    && totalItemCount >= ClothesFragment.itemsCount
+            }
         }
     }
     abstract fun loadMoreItems()

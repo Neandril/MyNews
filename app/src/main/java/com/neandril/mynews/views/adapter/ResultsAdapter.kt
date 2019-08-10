@@ -85,18 +85,11 @@ class ResultsAdapter(private var dataList: MutableList<Doc>, private val context
      */
     fun setData(articles: List<Doc>) {
 
-        val size = articles.size
-
-        dataList.clear()
         dataList.addAll(articles)
 
-        val sizeNew = articles.size
+        notifyDataSetChanged()
 
-        Log.e("ResultsAdapter", "size : $size, sizeNew : $sizeNew")
-
-        // notifyDataSetChanged()
-
-        notifyItemRangeChanged(size, sizeNew)
+        // notifyItemRangeChanged(size, sizeNew)
 
         if (dataList.size == 0) {
             Log.e("Results", "empty")

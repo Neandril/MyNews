@@ -1,11 +1,7 @@
 package com.neandril.mynews.models
 
-import android.accessibilityservice.GestureDescription
-import android.app.AlertDialog
 import android.util.Log
-import android.widget.Toast
 import com.neandril.mynews.api.ApiInterface
-import com.neandril.mynews.controllers.activities.ResultsActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,7 +14,7 @@ interface ArticleRepositoryInt {
 }
 
 interface SearchRepositoryInt {
-    fun getSearchData(callback: SearchCallback)
+    fun getSearchData(query: ArrayList<String>, callback: SearchCallback)
 }
 
 class ArticleRepositoryImplement(private val service: ApiInterface?): ArticleRepositoryInt {
@@ -79,20 +75,21 @@ class ArticleRepositoryImplement(private val service: ApiInterface?): ArticleRep
     }
 }
 
-class SearchRepositoryImplement(private val service: ApiInterface?, private val query : ArrayList<String>): SearchRepositoryInt {
-    override fun getSearchData(callback: SearchCallback) {
+class SearchRepositoryImplement(private val service: ApiInterface?): SearchRepositoryInt {
+    override fun getSearchData(query: ArrayList<String> ,callback: SearchCallback) {
         Log.e("Repository", "Query : " + query[0] + " bDate " + query[1] + " eDate " + query[2] + " section " + query[3] + " page " + query[4])
         service?.articleSearch(query[0], query[1], query[2], query[3], query[4].toInt(), "newest")?.enqueue(object : Callback<NYTSearchResultsModel> {
             /** Handle responses */
             override fun onResponse(call: Call<NYTSearchResultsModel>?, response: Response<NYTSearchResultsModel>?) {
                 Log.e("Repository", response?.body().toString())
+                // TODO: response?.code() == 200 , 400 , ...
                 callback.onResponse(response?.body())
             }
 
             /** Handle failure */
             override fun onFailure(call: Call<NYTSearchResultsModel>?, t: Throwable?) {
                 Log.e("Repository", t?.message)
-                callback.onResponse(null)
+                callback.onError(t?.message ?: "Null message")
             }
         })
     }
@@ -104,4 +101,5 @@ interface ArticleCallback {
 
 interface SearchCallback {
     fun onResponse(model: NYTSearchResultsModel?)
+    fun onError(message: String)
 }
