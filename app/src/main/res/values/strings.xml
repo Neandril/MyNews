@@ -37,6 +37,11 @@
     <string name="notificationsEnabled">Notifications are enabled</string>
     <string name="notificationsDisabled">Notification are disabled</string>
 
+    <!-- Error codes in researchs -->
+    <string name="code401">Unauthorized</string>
+    <string name="code429">Too many requests</string>
+    <string name="onFailure">An error happened</string>
+
     <!-- New York Times API Key -->
     <!-- TODO To delete -->
     <string name="apikey">aavEEACpR0OtOS8i70CKwCsNJorFyfFf</string>

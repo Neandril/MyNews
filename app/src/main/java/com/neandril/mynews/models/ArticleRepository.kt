@@ -1,6 +1,8 @@
 package com.neandril.mynews.models
 
+import android.content.res.Resources
 import android.util.Log
+import com.neandril.mynews.R
 import com.neandril.mynews.api.ApiInterface
 import retrofit2.Call
 import retrofit2.Callback
@@ -81,15 +83,19 @@ class SearchRepositoryImplement(private val service: ApiInterface?): SearchRepos
         service?.articleSearch(query[0], query[1], query[2], query[3], query[4].toInt(), "newest")?.enqueue(object : Callback<NYTSearchResultsModel> {
             /** Handle responses */
             override fun onResponse(call: Call<NYTSearchResultsModel>?, response: Response<NYTSearchResultsModel>?) {
-                Log.e("Repository", response?.body().toString())
-                // TODO: response?.code() == 200 , 400 , ...
-                callback.onResponse(response?.body())
+                when {
+                    response?.code() == 200 -> // Success
+                        callback.onResponse(response.body())
+                    response?.code() == 401 -> // Unauthorized
+                        callback.onError(Resources.getSystem().getString(R.string.code401))
+                    response?.code() == 429 -> // Too many requests
+                        callback.onError(Resources.getSystem().getString(R.string.code429))
+                }
             }
 
             /** Handle failure */
             override fun onFailure(call: Call<NYTSearchResultsModel>?, t: Throwable?) {
-                Log.e("Repository", t?.message)
-                callback.onError(t?.message ?: "Null message")
+                callback.onError(t?.message ?: Resources.getSystem().getString(R.string.onFailure))
             }
         })
     }
