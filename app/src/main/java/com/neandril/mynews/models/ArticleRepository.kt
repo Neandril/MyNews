@@ -19,6 +19,10 @@ interface SearchRepositoryInt {
     fun getSearchData(query: ArrayList<String>, callback: SearchCallback)
 }
 
+interface NotificationsRepositoryInt {
+    fun getNotifsData(query: ArrayList<String>, callback: NotifsCallback)
+}
+
 class ArticleRepositoryImplement(private val service: ApiInterface?): ArticleRepositoryInt {
     override fun getTopStoriesData(callback: ArticleCallback) {
         service?.topStories()?.enqueue(object : Callback<NYTModel> {
@@ -101,6 +105,22 @@ class SearchRepositoryImplement(private val service: ApiInterface?): SearchRepos
     }
 }
 
+class NotificationRepositoryImplement(private val service: ApiInterface?): NotificationsRepositoryInt {
+    override fun getNotifsData(query: ArrayList<String>, callback: NotifsCallback) {
+        service?.articleSearch(query[0], query[1], query[2], query[3], query[4].toInt(), "newest")?.enqueue(object : Callback<NYTSearchResultsModel> {
+            /** Handle responses */
+            override fun onResponse(call: Call<NYTSearchResultsModel>?, response: Response<NYTSearchResultsModel>?) {
+                callback.onResponse(response?.body())
+            }
+
+            /** Handle failure */
+            override fun onFailure(call: Call<NYTSearchResultsModel>?, t: Throwable?) {
+
+            }
+        })
+    }
+}
+
 interface ArticleCallback {
     fun onResponse(model: NYTModel?)
 }
@@ -108,4 +128,8 @@ interface ArticleCallback {
 interface SearchCallback {
     fun onResponse(model: NYTSearchResultsModel?)
     fun onError(message: String)
+}
+
+interface NotifsCallback {
+    fun onResponse(model: NYTSearchResultsModel?)
 }

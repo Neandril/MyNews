@@ -4,9 +4,9 @@ package com.neandril.mynews.models
  * Main models
  */
 
-import java.util.ArrayList
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 /**
  * Main Model
@@ -40,7 +40,6 @@ class Article(
     var publishedDate: String?, @field:SerializedName(value = "section", alternate = ["section_name"])
     @field:Expose
     var section: String?
-
 ) {
 
     @SerializedName(value = "url", alternate = ["web_url"])

@@ -10,8 +10,6 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.neandril.mynews.R
 import com.neandril.mynews.models.Article
-import java.lang.Exception
-import java.util.*
 
 
 class DataAdapter(private var dataList: MutableList<Article>, private val context: Context) : RecyclerView.Adapter<DataAdapter.ViewHolder>() {
@@ -87,7 +85,7 @@ class DataAdapter(private var dataList: MutableList<Article>, private val contex
 
     /**
      * Function that put articles inside the list
-     * The list is cleared each time, to prevent duplications
+     * The list is cleared each time, to prevent duplicates
      */
     fun setData(articles: List<Article>) {
         dataList.clear()

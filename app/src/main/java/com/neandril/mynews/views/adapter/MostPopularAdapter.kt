@@ -87,11 +87,11 @@ class MostPopularAdapter(private var dataList: MutableList<Article>, private val
 
     /**
      * Function that put articles inside the list
-     * The list is cleared each time, to prevent duplications
+     * The list is cleared each time, to prevent duplicates
      */
     fun setData(articles: List<Article>) {
         dataList.clear()
-        dataList.addAll(articles)
+        dataList.addAll(articles.sortedByDescending { it.publishedDate })
 
         notifyDataSetChanged()
     }

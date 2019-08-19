@@ -35,7 +35,9 @@
     <string name="urlPrefix">https://static01.nyt.com/</string>
     <string name="datesTexts">%1$s/%2$s/%3$d</string>
     <string name="notificationsEnabled">Notifications are enabled</string>
-    <string name="notificationsDisabled">Notification are disabled</string>
+    <string name="notificationsDisabled">Notifications are disabled</string>
+    <string name="notifsResultFound">%1$d results are found corresponding your criterias</string>
+    <string name="notifsNoResultFound">No result found</string>
 
     <!-- Error codes in researchs -->
     <string name="code401">Unauthorized</string>
@@ -46,6 +48,4 @@
     <!-- TODO To delete -->
     <string name="apikey">aavEEACpR0OtOS8i70CKwCsNJorFyfFf</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
