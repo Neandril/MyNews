@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.support.annotation.NonNull
 import android.support.v4.app.NotificationCompat
 import android.util.Log
+import androidx.work.WorkManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.neandril.mynews.R
@@ -15,6 +16,10 @@ import com.neandril.mynews.controllers.activities.NotificationsActivity
 import com.neandril.mynews.models.NYTSearchResultsModel
 import com.neandril.mynews.models.NotificationRepositoryImplement
 import com.neandril.mynews.models.NotifsCallback
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.temporal.ChronoUnit
 import java.util.*
 
 class MyWorker(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
@@ -29,7 +34,7 @@ class MyWorker(context: Context, workerParams: WorkerParameters) : Worker(contex
         const val PREFS_SECTION = "prefs_sections"
     }
 
-    var prefs: SharedPreferences? = null
+    private var prefs: SharedPreferences? = null
 
     /** Calendar config */
     private val calendar = Calendar.getInstance()
@@ -47,14 +52,9 @@ class MyWorker(context: Context, workerParams: WorkerParameters) : Worker(contex
         bDate = "$year$mm${day.paddingZero()}" // Default beginDate (set to today)
         eDate = "$year$mm${day.paddingZero()}" // Default endDate (set to today)
         prefs = applicationContext.getSharedPreferences(NotificationsActivity.PREFS_FILENAME, 0)
-        val currentHour = calendar.get(Calendar.HOUR_OF_DAY)
 
-        if (currentHour == 14) {
-            Log.e("Hour", "It's 14")
-            getData()
-        } else {
-            Log.e("Hour", "It's not 14")
-        }
+        getData()
+
         return Result.success()
     }
 

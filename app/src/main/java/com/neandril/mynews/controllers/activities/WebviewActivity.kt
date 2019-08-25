@@ -2,6 +2,7 @@ package com.neandril.mynews.controllers.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.neandril.mynews.R
@@ -22,5 +23,16 @@ class WebviewActivity : AppCompatActivity() {
         mWebview = findViewById(R.id.webview)
 
         mWebview?.loadUrl(url)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return if (item?.itemId == android.R.id.home) {
+            finish()
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
+
+
     }
 }

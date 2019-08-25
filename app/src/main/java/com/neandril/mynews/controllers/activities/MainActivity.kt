@@ -14,13 +14,18 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.neandril.mynews.R
+import com.neandril.mynews.utils.Helpers
 import com.neandril.mynews.views.SectionsPagerAdapter
+import com.neandril.mynews.views.adapter.DataAdapter
 
 class MainActivity : AppCompatActivity() {
 
     val PREFS_FILENAME = "com.neandril.mynews.prefs"
     val PREFS_TOGGLE = "prefs_toggle"
+    val PREFS_URL = "prefs_url"
     var prefs: SharedPreferences? = null
 
     public override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         val notifs = prefs!!.getBoolean(PREFS_TOGGLE, true)
 
         Log.e("MainActivity", "Notifications status : $notifs")
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -66,6 +70,9 @@ class MainActivity : AppCompatActivity() {
             true
         }
         R.id.action_help -> {
+            val urlArrayList: MutableList<String> = Helpers.retrieveData(this)
+
+            Log.e("Retrieved", "Datas stored : $urlArrayList")
             Toast.makeText(this, "Help clicked", Toast.LENGTH_LONG).show()
             true
         }
@@ -102,6 +109,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Finish activity when reaching the last fragment.
      */
+    /**
     override fun onBackPressed() {
         val fragmentManager = supportFragmentManager
         if (fragmentManager.backStackEntryCount > 1) {
@@ -110,4 +118,5 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
     }
+    **/
 }

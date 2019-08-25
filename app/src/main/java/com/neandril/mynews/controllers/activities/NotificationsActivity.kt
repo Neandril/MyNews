@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.work.Constraints
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.neandril.mynews.R
@@ -66,21 +67,14 @@ class NotificationsActivity : AppCompatActivity() {
             if (isChecked) {
                 Toast.makeText(this, R.string.notificationsEnabled, Toast.LENGTH_SHORT).show()
 
-                /**  */
+                /** Apply the switch position */
                 val editor = prefs?.edit()
                 editor
                     ?.putBoolean(PREFS_TOGGLE, true)
                     ?.apply()
 
-                /** Init and run the worker */
-                // val worker = OneTimeWorkRequest.Builder(MyWorker::class.java).build()
-
-                val worker = PeriodicWorkRequest
-                    .Builder(MyWorker::class.java, 1, TimeUnit.HOURS)
-                    .addTag("MyTag")
-                    .build()
-
-                WorkManager.getInstance().enqueue(worker)
+                /** Start the worker */
+                startWorker()
 
             } else {
                 Toast.makeText(this, R.string.notificationsDisabled, Toast.LENGTH_SHORT).show()
@@ -163,7 +157,17 @@ class NotificationsActivity : AppCompatActivity() {
                 ?.putString(PREFS_SECTIONS, getCheckedSections())
                 ?.apply()
         }
+    }
 
+    private fun startWorker() {
+        /** Init and run the worker */
+        // val worker = OneTimeWorkRequest.Builder(MyWorker::class.java).build()
 
+        val worker = PeriodicWorkRequest
+            .Builder(MyWorker::class.java, 1, TimeUnit.DAYS)
+            .addTag("MyTag")
+            .build()
+
+        WorkManager.getInstance().enqueue(worker)
     }
 }
