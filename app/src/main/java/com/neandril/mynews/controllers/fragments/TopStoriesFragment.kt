@@ -77,6 +77,15 @@ class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
         return view
     }
 
+    /**
+     * When resumed (for example when went back after reading an article),
+     * the list is refreshed
+     */
+    override fun onResume() {
+        super.onResume()
+        getData()
+    }
+
     fun onItemsLoadComplete() {
         // Stop refresh animation
         mSwipeRefreshLayout.isRefreshing = false

@@ -55,7 +55,7 @@ class MainActivityTest {
      * Test if the Search button runs the correct activity
      */
     @Test @Throws (Exception::class)
-    fun buttonSearch_OpenSearchActivity() {
+    fun buttonSearch_OpensSearchActivity() {
         onView(withId(R.id.action_search)).check(matches(isDisplayed()))
         onView(withId(R.id.action_search)).perform(click())
         onView(withId(R.id.editText_search_query)).check(matches(isDisplayed()))
@@ -66,7 +66,7 @@ class MainActivityTest {
      * Test if the Notification Button opens the correct activity
      */
     @Test @Throws(Exception::class)
-    fun buttonNotifications_OpenNotificationsActivity() {
+    fun buttonNotifications_OpensNotificationsActivity() {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext())
         onView(withText(mActivity.getString(R.string.notifications))).perform(click())
     }

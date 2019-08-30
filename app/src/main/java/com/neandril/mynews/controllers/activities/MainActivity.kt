@@ -23,13 +23,16 @@ import com.neandril.mynews.views.adapter.DataAdapter
 
 class MainActivity : AppCompatActivity() {
 
-    val PREFS_FILENAME = "com.neandril.mynews.prefs"
-    val PREFS_TOGGLE = "prefs_toggle"
-    val PREFS_URL = "prefs_url"
+    companion object {
+        const val PREFS_FILENAME = "com.neandril.mynews.prefs"
+        const val PREFS_TOGGLE = "prefs_toggle"
+    }
+
     var prefs: SharedPreferences? = null
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -41,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         tabs.setupWithViewPager(viewPager)
 
         prefs = this.getSharedPreferences(PREFS_FILENAME, 0)
-        val notifs = prefs!!.getBoolean(PREFS_TOGGLE, true)
+        val notifs = prefs!!.getBoolean(PREFS_TOGGLE, false)
 
         Log.e("MainActivity", "Notifications status : $notifs")
     }
@@ -58,51 +61,27 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_search -> {
-            Toast.makeText(this, "Search clicked", Toast.LENGTH_LONG).show()
             val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
             true
         }
         R.id.action_notification -> {
-            Toast.makeText(this, "Notifications clicked", Toast.LENGTH_LONG).show()
             val intent = Intent(this,NotificationsActivity::class.java)
             startActivity(intent)
             true
         }
         R.id.action_help -> {
-            val urlArrayList: MutableList<String> = Helpers.retrieveData(this)
-
-            Log.e("Retrieved", "Datas stored : $urlArrayList")
-            Toast.makeText(this, "Help clicked", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, HelpActivity::class.java)
+            startActivity(intent)
             true
         }
         R.id.action_about -> {
-            Toast.makeText(this, "About clicked", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, AboutActivity::class.java)
+            startActivity(intent)
             true
         }
         else -> {
             super.onOptionsItemSelected(item)
-        }
-    }
-
-    @SuppressLint("PrivateResource")
-    fun changeFragment(f: Fragment, cleanStack: Boolean = false) {
-        val ft = supportFragmentManager.beginTransaction()
-        if (cleanStack) {
-            clearBackStack()
-        }
-        ft.setCustomAnimations(
-            R.anim.abc_fade_in, R.anim.abc_fade_out, R.anim.abc_popup_enter, R.anim.abc_popup_exit)
-        ft.replace(R.id.fragment_container, f)
-        ft.addToBackStack(null)
-        ft.commit()
-    }
-
-    private fun clearBackStack() {
-        val manager = supportFragmentManager
-        if (manager.backStackEntryCount > 0) {
-            val first = manager.getBackStackEntryAt(0)
-            manager.popBackStack(first.id, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
     }
 

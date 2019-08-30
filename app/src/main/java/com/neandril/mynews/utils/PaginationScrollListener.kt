@@ -5,12 +5,13 @@ import android.support.v7.widget.RecyclerView
 
 /**
  * Pagination class to add more items to the list when reach the last item.
+ * The pagination is only used for loading more results in the result activity
  */
 abstract class PaginationScrollListener
-/**
- * @param layoutManager
- */
-    (var layoutManager: LinearLayoutManager) : RecyclerView.OnScrollListener() {
+    /**
+     * @param layoutManager
+     */
+    (private var layoutManager: LinearLayoutManager) : RecyclerView.OnScrollListener() {
 
     abstract fun isLastPage(): Boolean
 

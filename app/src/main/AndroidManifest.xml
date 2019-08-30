@@ -23,9 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controllers.activities.SearchActivity"
+        <activity
+            android:name=".controllers.activities.SearchActivity"
             android:parentActivityName=".controllers.activities.MainActivity" />
-        <activity android:name=".controllers.activities.NotificationsActivity"
+        <activity
+            android:name=".controllers.activities.NotificationsActivity"
             android:parentActivityName=".controllers.activities.MainActivity" />
         <activity
             android:name=".controllers.activities.WebviewActivity"
@@ -33,6 +35,12 @@
         <activity
             android:name=".controllers.activities.ResultsActivity"
             android:parentActivityName=".controllers.activities.SearchActivity" />
+        <activity
+            android:name=".controllers.activities.HelpActivity"
+            android:parentActivityName=".controllers.activities.MainActivity" />
+        <activity
+            android:name=".controllers.activities.AboutActivity"
+            android:parentActivityName=".controllers.activities.MainActivity" />
     </application>
 
 </manifest>

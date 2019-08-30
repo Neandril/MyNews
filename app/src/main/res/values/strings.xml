@@ -1,4 +1,8 @@
 <resources>
+    <!-- New York Times API Key -->
+    <!-- TODO To delete -->
+    <string name="apikey">aavEEACpR0OtOS8i70CKwCsNJorFyfFf</string>
+
     <string name="app_name">My News</string>
     <string name="tab_top_stories">TOP STORIES</string>
     <string name="tab_most_popular">MOST POPULAR</string>
@@ -34,6 +38,7 @@
     <string name="alertDialogButton">Back</string>
     <string name="urlPrefix">https://static01.nyt.com/</string>
     <string name="datesTexts">%1$s/%2$s/%3$d</string>
+    <string name="notificationsFillTheFields">Please fill the fields</string>
     <string name="notificationsEnabled">Notifications are enabled</string>
     <string name="notificationsDisabled">Notifications are disabled</string>
     <string name="notifsResultFound">%1$d results are found corresponding your criterias</string>
@@ -44,8 +49,26 @@
     <string name="code429">Too many requests</string>
     <string name="onFailure">An error happened</string>
 
-    <!-- New York Times API Key -->
-    <!-- TODO To delete -->
-    <string name="apikey">aavEEACpR0OtOS8i70CKwCsNJorFyfFf</string>
+    <!-- About Activity -->
+    <string name="about_title">About</string>
+    <string name="about_subject">Subject : &#160;</string>
+    <string name="about_subject_desc">This application retrieve news from the New York Times, using their dedicated APIs. It was developed for an OpenClassrooms\' project.</string>
+    <string name="about_dev">Developer : &#160;</string>
+    <string name="about_developer">Rémy DALLAVALLE</string>
+    <string name="about_github">Github : &#160;</string>
+    <string name="about_github_adress">https://github.com/Neandril/MyNews</string>
+
+    <!-- Help Activity -->
+    <string name="help_title">Help</string>
+    <string name="help_link">Link for help : &#160;</string>
+    <string name="help_weblink">https://developer.nytimes.com/faq</string>
+    <string name="help_tips_title">Some useful things you may consider when using this application</string>
+    <string-array name="help_tips">
+        <item>• When an article is read, it became highlightened.</item>
+        <item>• Notifications are set around 18 o\'clock each days.</item>
+        <item>• If you want to modify your notifications preferences, you do not have to disable it and enable it again : just leave the page (back button for example) is enough.</item>
+        <item>• On the search screen, if a date field isn\'t filled, the default date is today\'s.</item>
+        <item>• Research queries needs to be comma-separated. Every spaces in the query are automatically replaced by a comma.</item>
+    </string-array>
 
 </resources>

@@ -7,11 +7,13 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.work.Constraints
-import androidx.work.PeriodicWorkRequest
+import androidx.work.NetworkType
+import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.neandril.mynews.R
 import com.neandril.mynews.utils.MyWorker
 import kotlinx.android.synthetic.main.activity_options.*
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class NotificationsActivity : AppCompatActivity() {
@@ -56,7 +58,7 @@ class NotificationsActivity : AppCompatActivity() {
         queryTerm = editTextQueryTerm.text.toString()
 
         /** Configure values according to prefs */
-        switch.isChecked = prefs?.getBoolean(PREFS_TOGGLE, true) ?: false
+        switch.isChecked = prefs?.getBoolean(PREFS_TOGGLE, false) ?: true
         editTextQueryTerm.setText(prefs?.getString(PREFS_QUERY, ""))
         updateCheckboxes()
 
@@ -65,17 +67,20 @@ class NotificationsActivity : AppCompatActivity() {
          */
         switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                Toast.makeText(this, R.string.notificationsEnabled, Toast.LENGTH_SHORT).show()
+                if ((editTextQueryTerm.text.toString() == "") || (getCheckedSections() == "")) {
+                    Toast.makeText(this, R.string.notificationsFillTheFields, Toast.LENGTH_SHORT).show()
+                    switch.isChecked = false
+                } else {
+                    Toast.makeText(this, R.string.notificationsEnabled, Toast.LENGTH_SHORT).show()
+                    /** Apply the switch position */
+                    val editor = prefs?.edit()
+                    editor
+                        ?.putBoolean(PREFS_TOGGLE, true)
+                        ?.apply()
 
-                /** Apply the switch position */
-                val editor = prefs?.edit()
-                editor
-                    ?.putBoolean(PREFS_TOGGLE, true)
-                    ?.apply()
-
-                /** Start the worker */
-                startWorker()
-
+                    /** Start the worker */
+                    startWorker()
+                }
             } else {
                 Toast.makeText(this, R.string.notificationsDisabled, Toast.LENGTH_SHORT).show()
                 val editor = prefs?.edit()
@@ -148,8 +153,6 @@ class NotificationsActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         queryTerm = editText_search_query.text.toString()
-        Log.e("Notifications", "onPause : $queryTerm")
-
         if (prefs?.getBoolean(PREFS_TOGGLE, false) == true) {
             val editor = prefs?.edit()
             editor
@@ -163,11 +166,40 @@ class NotificationsActivity : AppCompatActivity() {
         /** Init and run the worker */
         // val worker = OneTimeWorkRequest.Builder(MyWorker::class.java).build()
 
+        val currentDate = Calendar.getInstance()
+        val dueDate = Calendar.getInstance()
+
+        // Set Execution around 12:00:00 AM
+        dueDate.set(Calendar.HOUR_OF_DAY, 12)
+        dueDate.set(Calendar.MINUTE, 0)
+        dueDate.set(Calendar.SECOND, 0)
+
+        if (dueDate.before(currentDate)) {
+            dueDate.add(Calendar.HOUR_OF_DAY, 24)
+        }
+        val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
+
+        Log.e("Worker", "diff : $timeDiff")
+
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build()
+
+        val dailyWorkRequest = OneTimeWorkRequestBuilder<MyWorker>()
+            .setConstraints(constraints)
+            .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
+            .addTag("MyTag")
+            .build()
+
+        WorkManager.getInstance().enqueue(dailyWorkRequest)
+
+        /**
         val worker = PeriodicWorkRequest
             .Builder(MyWorker::class.java, 1, TimeUnit.DAYS)
             .addTag("MyTag")
             .build()
 
         WorkManager.getInstance().enqueue(worker)
+        **/
     }
 }

@@ -1,20 +1,21 @@
 package com.neandril.mynews
 
-import android.widget.EditText
-import com.neandril.mynews.api.ApiCall
-import com.neandril.mynews.api.ApiInterface
-import com.neandril.mynews.controllers.activities.MainActivity
-import junit.framework.Assert.assertNotNull
-import org.hamcrest.CoreMatchers.equalTo
-import org.hamcrest.MatcherAssert.assertThat
-import org.junit.Before
+import com.neandril.mynews.utils.paddingZero
+import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.Mockito
-import org.mockito.Mockito.*
-import rx.observers.TestSubscriber
 
 class ExampleUnitTest {
 
+    /**
+     * Test if months and days are 2 digits
+     */
+    @Test
+    fun paddingZero_test() {
+        val yy = "2019"
+        val mm = "9".toInt().paddingZero()
+        val dd = "2".toInt().paddingZero()
+        val date = "$yy$mm$dd"
 
+        assertEquals("20190902", date)
+    }
 }

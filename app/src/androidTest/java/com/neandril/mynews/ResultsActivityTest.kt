@@ -45,7 +45,7 @@ class ResultsActivityTest {
 
     @Test
     @Throws (Exception::class)
-    fun search() {
+    fun searchActivity_displaysWarningMessage_orNextActivity() {
         val activityMonitor = InstrumentationRegistry.getInstrumentation().addMonitor(ResultsActivity::class.java.name, null, false)
 
         /** Input "trump" for the search field */

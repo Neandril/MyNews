@@ -98,7 +98,8 @@ class SearchActivity : AppCompatActivity() {
                     if (eDate < bDate) {
                         Toast.makeText(applicationContext, R.string.verifyDates, Toast.LENGTH_LONG).show()
                     } else {
-                        mQueryItems.addAll(listOf(query, bDate, eDate, sectionName, "0"))
+                        // Replace spaces by comma for query term
+                        mQueryItems.addAll(listOf(query.replace(" ", ","), bDate, eDate, sectionName, "0"))
                         Log.e("Search", "Query : $query")
                         intent.putStringArrayListExtra("query", mQueryItems)
                         startActivity(intent)
@@ -120,7 +121,7 @@ class SearchActivity : AppCompatActivity() {
             val v = firstCheckboxesLayout.getChildAt(i)
             if (v is CheckBox) {
                 if (v.isChecked) {
-                    sectionName += v.text.toString() + " "
+                    sectionName += v.text.toString() + ","
                 }
             }
         }
@@ -129,7 +130,7 @@ class SearchActivity : AppCompatActivity() {
             val v = secondCheckboxesLayout.getChildAt(i)
             if (v is CheckBox) {
                 if (v.isChecked) {
-                    sectionName += v.text.toString() + " "
+                    sectionName += v.text.toString() + ","
                 }
             }
         }

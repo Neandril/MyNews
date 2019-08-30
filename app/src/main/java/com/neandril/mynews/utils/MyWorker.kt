@@ -4,9 +4,9 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.SharedPreferences
-import android.support.annotation.NonNull
 import android.support.v4.app.NotificationCompat
 import android.util.Log
+import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
@@ -16,11 +16,8 @@ import com.neandril.mynews.controllers.activities.NotificationsActivity
 import com.neandril.mynews.models.NYTSearchResultsModel
 import com.neandril.mynews.models.NotificationRepositoryImplement
 import com.neandril.mynews.models.NotifsCallback
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.LocalTime
-import java.time.temporal.ChronoUnit
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 class MyWorker(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
 
@@ -47,13 +44,32 @@ class MyWorker(context: Context, workerParams: WorkerParameters) : Worker(contex
         NotificationRepositoryImplement(ApiCall.getInstance())
     }
 
-    @NonNull
     override fun doWork(): Result {
         bDate = "$year$mm${day.paddingZero()}" // Default beginDate (set to today)
         eDate = "$year$mm${day.paddingZero()}" // Default endDate (set to today)
         prefs = applicationContext.getSharedPreferences(NotificationsActivity.PREFS_FILENAME, 0)
 
         getData()
+
+        val currentDate = Calendar.getInstance()
+        val dueDate = Calendar.getInstance()
+
+        // Set Execution around 12:00:00 AM
+        dueDate.set(Calendar.HOUR_OF_DAY, 12)
+        dueDate.set(Calendar.MINUTE, 0)
+        dueDate.set(Calendar.SECOND, 0)
+
+        if (dueDate.before(currentDate)) {
+            dueDate.add(Calendar.HOUR_OF_DAY, 24)
+        }
+        val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
+
+        val dailyWorkRequest = OneTimeWorkRequestBuilder<MyWorker>()
+            .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
+            .addTag("MyTag")
+            .build()
+
+        WorkManager.getInstance().enqueue(dailyWorkRequest)
 
         return Result.success()
     }

@@ -10,10 +10,14 @@ object Helpers {
 
     private var prefs: SharedPreferences? = null
 
-    val PREFS_FILENAME = "com.neandril.mynews.prefs" // Pref filename
-    val PREFS_URL = "prefs_url" // Bool : position of the switch
-    val gson = Gson()
+    private const val PREFS_FILENAME = "com.neandril.mynews.prefs" // Pref filename
+    private const val PREFS_URL = "prefs_url" // Url of article
+    private val gson = Gson()
 
+    /**
+     * Function to save URLs into a json
+     * @url : string
+     */
     fun saveData(url: MutableList<String>) {
         val editor = prefs?.edit()
         val json = gson.toJson(url)
@@ -23,6 +27,10 @@ object Helpers {
         Log.e("saveData", "saved : $json")
     }
 
+    /**
+     * Function that retrieve datas
+     * @return : Return a list of saved urls
+     */
     fun retrieveData(context: Context) : MutableList<String> {
         prefs = context.getSharedPreferences(PREFS_FILENAME, 0)
         val json = prefs?.getString(PREFS_URL, "[]")
