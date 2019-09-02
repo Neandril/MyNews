@@ -99,7 +99,7 @@ class SearchActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, R.string.verifyDates, Toast.LENGTH_LONG).show()
                     } else {
                         // Replace spaces by comma for query term
-                        mQueryItems.addAll(listOf(query.replace(" ", ","), bDate, eDate, sectionName, "0"))
+                        mQueryItems.addAll(listOf(query.trim().replace(" ", ","), bDate, eDate, sectionName, "0"))
                         Log.e("Search", "Query : $query")
                         intent.putStringArrayListExtra("query", mQueryItems)
                         startActivity(intent)

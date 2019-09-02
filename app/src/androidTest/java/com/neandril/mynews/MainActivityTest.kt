@@ -76,7 +76,7 @@ class MainActivityTest {
      */
     @Test
     fun recyclerViewItemClick() {
-        onView(withId(R.id.topStories_RecyclerView)).perform(RecyclerViewActions.actionOnItemAtPosition<DataAdapter.ViewHolder>(1, click()))
+        onView(withId(R.id.topStories_RecyclerView)).perform(RecyclerViewActions.actionOnItemAtPosition<DataAdapter.ViewHolder>(0, click()))
         onView(withId(R.id.webview)).check(matches(isDisplayed()))
     }
 }

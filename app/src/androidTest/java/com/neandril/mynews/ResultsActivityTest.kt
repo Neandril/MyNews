@@ -49,17 +49,17 @@ class ResultsActivityTest {
         val activityMonitor = InstrumentationRegistry.getInstrumentation().addMonitor(ResultsActivity::class.java.name, null, false)
 
         /** Input "trump" for the search field */
-        Espresso.onView(withId(R.id.editText_search_query)).perform(replaceText("trump"))
+        onView(withId(R.id.editText_search_query)).perform(replaceText("trump"))
 
         /** Click on search button */
-        Espresso.onView(withId(R.id.button_search)).perform(click())
+        onView(withId(R.id.button_search)).perform(click())
 
         val nextActivity = InstrumentationRegistry.getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000)
 
         /** Make sure at least one checkbox is checked */
         if(nextActivity == null){
-            Espresso.onView(withId(R.id.checkbox_politics)).perform(click())
-            Espresso.onView(withId(R.id.button_search)).perform(click())
+            onView(withId(R.id.checkbox_politics)).perform(click())
+            onView(withId(R.id.button_search)).perform(click())
         }
 
         // Check nextActivity recyclerview

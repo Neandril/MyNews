@@ -60,10 +60,11 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:2.4.0"
     implementation "com.squareup.retrofit2:converter-moshi:2.0.0"
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-
+implementation "org.koin:koin-core:2.0.1"
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.robolectric:robolectric:4.3'
     testImplementation "org.mockito:mockito-core:2.28.2"
+    androidTestImplementation "org.mockito:mockito-core:2.28.2"
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'

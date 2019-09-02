@@ -41,14 +41,28 @@ class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
     lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
 
     private val repository: ArticleRepositoryInt by lazy {
+
         /*
         object : ArticleRepositoryInt {
-        override fun getTopStoriesData(callback: ArticleCallback) {
+            override fun getMostPopularData(callback: ArticleCallback) {
+
+            }
+
+            override fun getScienceData(callback: ArticleCallback) {
+
+            }
+
+            override fun getTechnologyData(callback: ArticleCallback) {
+
+            }
+
+            override fun getTopStoriesData(callback: ArticleCallback) {
             val model = NYTModel()
             model.setArticles(arrayListOf(Article("Il fait chaud à Paris", "2019-07-20T05:10:00-04:00", "global")))
             callback.onResponse(model)
         }}
-        */
+
+         */
 
         ArticleRepositoryImplement(ApiCall.getInstance())
     }
