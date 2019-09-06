@@ -6,18 +6,20 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.Toast
 import com.neandril.mynews.R
-import com.neandril.mynews.api.ApiCall
 import com.neandril.mynews.controllers.activities.WebviewActivity
-import com.neandril.mynews.models.*
+import com.neandril.mynews.models.Article
+import com.neandril.mynews.models.ArticleCallback
+import com.neandril.mynews.models.ArticleRepositoryInt
+import com.neandril.mynews.models.NYTModel
 import com.neandril.mynews.utils.inflate
 import com.neandril.mynews.views.adapter.DataAdapter
+import org.koin.android.ext.android.inject
 
 class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
 
@@ -40,32 +42,7 @@ class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
     lateinit var mAdapter: DataAdapter
     lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
 
-    private val repository: ArticleRepositoryInt by lazy {
-
-        /*
-        object : ArticleRepositoryInt {
-            override fun getMostPopularData(callback: ArticleCallback) {
-
-            }
-
-            override fun getScienceData(callback: ArticleCallback) {
-
-            }
-
-            override fun getTechnologyData(callback: ArticleCallback) {
-
-            }
-
-            override fun getTopStoriesData(callback: ArticleCallback) {
-            val model = NYTModel()
-            model.setArticles(arrayListOf(Article("Il fait chaud à Paris", "2019-07-20T05:10:00-04:00", "global")))
-            callback.onResponse(model)
-        }}
-
-         */
-
-        ArticleRepositoryImplement(ApiCall.getInstance())
-    }
+    private val repository : ArticleRepositoryInt by inject()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = container?.inflate(R.layout.fragment_topstories)
@@ -80,8 +57,6 @@ class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
         mAdapter.setOnItemClickListener(this)
         recyclerView.adapter = mAdapter
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-
-        getData()
 
         mSwipeRefreshLayout.setOnRefreshListener {
             // Refresh items
@@ -109,6 +84,7 @@ class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
      * Fetch data from the API
      */
     private fun getData() {
+
         repository.getTopStoriesData(object : ArticleCallback {
             override fun onResponse(model: NYTModel?) {
                 if (model == null) {

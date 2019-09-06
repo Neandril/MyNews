@@ -3,10 +3,7 @@ package com.neandril.mynews.views.adapter
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.support.constraint.solver.widgets.Helper
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,12 +13,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.neandril.mynews.R
 import com.neandril.mynews.models.Article
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.neandril.mynews.utils.Helpers
-import com.neandril.mynews.utils.MyWorker
-import com.neandril.mynews.utils.PaginationScrollListener
-import com.squareup.moshi.Json
 
 class DataAdapter(private var dataList: MutableList<Article>, private val context: Context) : RecyclerView.Adapter<DataAdapter.ViewHolder>() {
 

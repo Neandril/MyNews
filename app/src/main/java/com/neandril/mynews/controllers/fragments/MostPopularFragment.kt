@@ -17,6 +17,7 @@ import com.neandril.mynews.controllers.activities.WebviewActivity
 import com.neandril.mynews.models.*
 import com.neandril.mynews.utils.inflate
 import com.neandril.mynews.views.adapter.MostPopularAdapter
+import org.koin.android.ext.android.inject
 
 class MostPopularFragment : Fragment(), MostPopularAdapter.ClickListener {
 
@@ -39,9 +40,7 @@ class MostPopularFragment : Fragment(), MostPopularAdapter.ClickListener {
     lateinit var mAdapter: MostPopularAdapter
     lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
 
-    private val repository: ArticleRepositoryInt by lazy {
-        ArticleRepositoryImplement(ApiCall.getInstance())
-    }
+    private val repository : ArticleRepositoryInt by inject()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = container?.inflate(R.layout.fragment_mostpopular)

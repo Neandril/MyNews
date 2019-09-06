@@ -8,13 +8,7 @@ import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-import android.support.test.espresso.contrib.RecyclerViewActions
-import android.view.View
-import android.widget.Toast
-import com.neandril.mynews.api.ApiCall
 import com.neandril.mynews.controllers.activities.MainActivity
-import com.neandril.mynews.models.*
-import com.neandril.mynews.views.adapter.DataAdapter
 import org.hamcrest.CoreMatchers.not
 import org.junit.Before
 import org.junit.Rule
@@ -52,7 +46,7 @@ class MainActivityTest {
     }
 
     /**
-     * Test if the Search button runs the correct activity
+     * Test if the Search button opens the correct activity
      */
     @Test @Throws (Exception::class)
     fun buttonSearch_OpensSearchActivity() {
@@ -63,20 +57,31 @@ class MainActivityTest {
     }
 
     /**
+     * Test if the Help button opens the correct activity
+     */
+    @Test @Throws (Exception::class)
+    fun buttonHelp_OpensHelpActivity() {
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext())
+        onView(withText(mActivity.getString(R.string.action_help))).perform(click())
+        onView(withId(R.id.imageView)).check(matches(isDisplayed()))
+    }
+
+    /**
+     * Test if the About button opens the correct activity
+     */
+    @Test @Throws (Exception::class)
+    fun buttonAbout_OpensAboutActivity() {
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext())
+        onView(withText(mActivity.getString(R.string.action_about))).perform(click())
+        onView(withId(R.id.imageView)).check(matches(isDisplayed()))
+    }
+
+    /**
      * Test if the Notification Button opens the correct activity
      */
     @Test @Throws(Exception::class)
     fun buttonNotifications_OpensNotificationsActivity() {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext())
         onView(withText(mActivity.getString(R.string.notifications))).perform(click())
-    }
-
-    /**
-     * Test if itemclick on the recyclerview first item works
-     */
-    @Test
-    fun recyclerViewItemClick() {
-        onView(withId(R.id.topStories_RecyclerView)).perform(RecyclerViewActions.actionOnItemAtPosition<DataAdapter.ViewHolder>(0, click()))
-        onView(withId(R.id.webview)).check(matches(isDisplayed()))
     }
 }
