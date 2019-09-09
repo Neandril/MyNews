@@ -16,6 +16,10 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/**
+ * Test for results in the search activity
+ */
+
 @RunWith(AndroidJUnit4::class)
 class ResultsActivityTest {
 

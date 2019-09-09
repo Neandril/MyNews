@@ -3,7 +3,6 @@ package com.neandril.mynews.controllers.activities
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.work.Constraints
@@ -18,13 +17,6 @@ import java.util.concurrent.TimeUnit
 
 class NotificationsActivity : AppCompatActivity() {
 
-    /** Variables */
-    private lateinit var sectionName : String
-    private lateinit var queryTerm : String
-
-    private lateinit var firstCheckboxesLayout : LinearLayout
-    private lateinit var secondCheckboxesLayout : LinearLayout
-
     /** Preparing consts */
     companion object {
         const val PREFS_FILENAME = "com.neandril.mynews.prefs" // Pref filename
@@ -32,6 +24,12 @@ class NotificationsActivity : AppCompatActivity() {
         const val PREFS_SECTIONS = "prefs_sections" // sesctions
         const val PREFS_QUERY = "prefs_query" // queryTerm
     }
+
+    /** Variables */
+    private lateinit var sectionName : String
+    private lateinit var queryTerm : String
+    private lateinit var firstCheckboxesLayout : LinearLayout
+    private lateinit var secondCheckboxesLayout : LinearLayout
 
     /** Initialize SharedPreferences */
     private var prefs: SharedPreferences? = null
@@ -42,7 +40,7 @@ class NotificationsActivity : AppCompatActivity() {
 
         supportActionBar?.title = getString(R.string.notifications)
 
-        prefs = this.getSharedPreferences(PREFS_FILENAME, 0)
+        prefs = this.getSharedPreferences(PREFS_FILENAME, 0) // Get prefs file
 
         /** Declaring UI Components */
         firstCheckboxesLayout = findViewById(R.id.first_checkboxes)
@@ -160,12 +158,13 @@ class NotificationsActivity : AppCompatActivity() {
                 ?.putString(PREFS_SECTIONS, getCheckedSections())
                 ?.apply()
         }
+
+        startWorker()
     }
 
+    /** Init and run the worker */
     private fun startWorker() {
-        /** Init and run the worker */
-        // val worker = OneTimeWorkRequest.Builder(MyWorker::class.java).build()
-
+        // Initialize calendars
         val currentDate = Calendar.getInstance()
         val dueDate = Calendar.getInstance()
 
@@ -174,17 +173,18 @@ class NotificationsActivity : AppCompatActivity() {
         dueDate.set(Calendar.MINUTE, 0)
         dueDate.set(Calendar.SECOND, 0)
 
+        // Get the remaining time (in Ms) before next execution
         if (dueDate.before(currentDate)) {
             dueDate.add(Calendar.HOUR_OF_DAY, 24)
         }
         val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
 
-        Log.e("Worker", "diff : $timeDiff")
-
+        // Set constraints : network needed
         val constraints = Constraints.Builder()
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build()
 
+        // Build the worker
         val dailyWorkRequest = OneTimeWorkRequestBuilder<MyWorker>()
             .setConstraints(constraints)
             .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)

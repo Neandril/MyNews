@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity
 import android.webkit.WebView
 import com.neandril.mynews.R
 
+/**
+ * Webview Activity
+ */
 class WebviewActivity : AppCompatActivity() {
 
     private var mWebview : WebView? = null

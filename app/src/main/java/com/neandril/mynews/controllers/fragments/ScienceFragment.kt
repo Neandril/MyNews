@@ -18,6 +18,7 @@ import com.neandril.mynews.models.*
 import com.neandril.mynews.utils.inflate
 import com.neandril.mynews.views.adapter.DataAdapter
 import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
 
 class ScienceFragment : Fragment(), DataAdapter.ClickListener {
 
@@ -87,7 +88,7 @@ class ScienceFragment : Fragment(), DataAdapter.ClickListener {
         repository.getScienceData(object : ArticleCallback {
             override fun onResponse(model: NYTModel?) {
                 if (model == null) {
-                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.checkConnection), Toast.LENGTH_SHORT).show()
                 } else {
                     /** If at least one item is received, populate the list */
                     loadingPanel.visibility = View.GONE

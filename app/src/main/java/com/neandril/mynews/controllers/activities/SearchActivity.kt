@@ -9,11 +9,11 @@ import android.view.View
 import android.widget.*
 import com.neandril.mynews.R
 import com.neandril.mynews.utils.paddingZero
-import java.text.ParseException
-import java.text.SimpleDateFormat
 import java.util.*
 
-
+/**
+ * Search Activity
+ */
 class SearchActivity : AppCompatActivity() {
 
     /** Variables */
@@ -21,7 +21,6 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var bDate : String
     private lateinit var eDate : String
     private lateinit var sectionName : String
-
     private lateinit var firstCheckboxesLayout : LinearLayout
     private lateinit var secondCheckboxesLayout : LinearLayout
 

@@ -13,6 +13,7 @@ interface ArticleRepositoryInt {
     fun getMostPopularData(callback: ArticleCallback)
     fun getScienceData(callback: ArticleCallback)
     fun getTechnologyData(callback: ArticleCallback)
+    fun getTestData(callback: ArticleCallback)
 }
 
 interface SearchRepositoryInt {
@@ -79,6 +80,20 @@ class ArticleRepositoryImplement(private val service: ApiInterface?): ArticleRep
             }
         })
     }
+
+    override fun getTestData(callback: ArticleCallback) {
+        val model = NYTModel()
+        model.setArticles(
+            arrayListOf(
+                Article(
+                    "This is the title",
+                    "2019-07-20T05:10:00-04:00",
+                    "politics"
+                )
+            )
+        )
+        callback.onResponse(model)
+    }
 }
 
 class SearchRepositoryImplement(private val service: ApiInterface?): SearchRepositoryInt {
@@ -120,6 +135,7 @@ class NotificationRepositoryImplement(private val service: ApiInterface?): Notif
         })
     }
 }
+
 
 interface ArticleCallback {
     fun onResponse(model: NYTModel?)

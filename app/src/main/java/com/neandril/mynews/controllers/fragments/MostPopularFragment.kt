@@ -12,9 +12,11 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.Toast
 import com.neandril.mynews.R
-import com.neandril.mynews.api.ApiCall
 import com.neandril.mynews.controllers.activities.WebviewActivity
-import com.neandril.mynews.models.*
+import com.neandril.mynews.models.Article
+import com.neandril.mynews.models.ArticleCallback
+import com.neandril.mynews.models.ArticleRepositoryInt
+import com.neandril.mynews.models.NYTModel
 import com.neandril.mynews.utils.inflate
 import com.neandril.mynews.views.adapter.MostPopularAdapter
 import org.koin.android.ext.android.inject
@@ -87,7 +89,7 @@ class MostPopularFragment : Fragment(), MostPopularAdapter.ClickListener {
         repository.getMostPopularData(object : ArticleCallback {
             override fun onResponse(model: NYTModel?) {
                 if (model == null) {
-                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.checkConnection), Toast.LENGTH_SHORT).show()
                 } else {
                     /** If at least one item is received, populate the list */
                     loadingPanel.visibility = View.GONE

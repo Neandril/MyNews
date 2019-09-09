@@ -6,6 +6,7 @@ import com.neandril.mynews.utils.applicationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
 
 /**
  * Entry point of the app.
@@ -22,9 +23,9 @@ class ApplicationInit : Application() {
         appContext = applicationContext
 
         startKoin {
-            androidLogger()
+            androidLogger(Level.DEBUG)
             androidContext(this@ApplicationInit)
-            modules(applicationModule)
+            modules(listOf(applicationModule))
         }
     }
 

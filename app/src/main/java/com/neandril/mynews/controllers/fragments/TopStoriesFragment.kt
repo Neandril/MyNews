@@ -20,6 +20,7 @@ import com.neandril.mynews.models.NYTModel
 import com.neandril.mynews.utils.inflate
 import com.neandril.mynews.views.adapter.DataAdapter
 import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
 
 class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
 
@@ -58,6 +59,8 @@ class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
         recyclerView.adapter = mAdapter
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
+        getData()
+
         mSwipeRefreshLayout.setOnRefreshListener {
             // Refresh items
             getData()
@@ -85,10 +88,10 @@ class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
      */
     private fun getData() {
 
-        repository.getTopStoriesData(object : ArticleCallback {
+        repository.getTestData(object : ArticleCallback {
             override fun onResponse(model: NYTModel?) {
                 if (model == null) {
-                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.checkConnection), Toast.LENGTH_SHORT).show()
                 } else {
                     /** If at least one item is received, populate the list */
                     loadingPanel.visibility = View.GONE

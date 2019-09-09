@@ -15,7 +15,9 @@ import com.neandril.mynews.api.ApiCall
 import com.neandril.mynews.controllers.activities.NotificationsActivity
 import com.neandril.mynews.models.NYTSearchResultsModel
 import com.neandril.mynews.models.NotificationRepositoryImplement
+import com.neandril.mynews.models.NotificationsRepositoryInt
 import com.neandril.mynews.models.NotifsCallback
+import org.koin.android.ext.android.inject
 import java.util.*
 import java.util.concurrent.TimeUnit
 

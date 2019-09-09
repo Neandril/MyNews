@@ -11,6 +11,7 @@
     <string name="search_articles">Search Articles</string>
     <string name="notifications">Notifications</string>
     <string name="dateformat">%1$s/%2$s/%3$s</string>
+    <string name="checkConnection">Check your Internet connection…</string>
 
     <!-- Menu strings -->
     <string name="action_notifications">Notifications</string>

@@ -8,7 +8,12 @@ import org.mockito.Mockito.times
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 
-class UnitTest {
+/**
+ * Theses test verify the return of the API call
+ */
+
+class
+UnitTest {
 
     @Mock
     lateinit var repo: ArticleRepositoryInt
@@ -58,14 +63,21 @@ class UnitTest {
     }
 
     @Test
+    fun getTestData() {
+        repo.getTestData(object : ArticleCallback {
+            override fun onResponse(model: NYTModel?) {
+                verify(repo, times(1).description("Test"))
+            }
+        })
+    }
+
+    @Test
     fun search() {
         val query = ArrayList(listOf("trump", "20190801", "20190830", "politics", "0"))
         searchRepo.getSearchData(query, object : SearchCallback {
-            /** Display error */
             override fun onError(message: String) {
 
             }
-            /** Proceed */
             override fun onResponse(model: NYTSearchResultsModel?) {
                 verify(searchRepo, times(1).description("Search"))
             }
