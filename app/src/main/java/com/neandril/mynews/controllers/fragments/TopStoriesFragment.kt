@@ -20,7 +20,6 @@ import com.neandril.mynews.models.NYTModel
 import com.neandril.mynews.utils.inflate
 import com.neandril.mynews.views.adapter.DataAdapter
 import org.koin.android.ext.android.inject
-import org.koin.core.qualifier.named
 
 class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
 
@@ -88,7 +87,7 @@ class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
      */
     private fun getData() {
 
-        repository.getTestData(object : ArticleCallback {
+        repository.getTopStoriesData(object : ArticleCallback {
             override fun onResponse(model: NYTModel?) {
                 if (model == null) {
                     Toast.makeText(context, getString(R.string.checkConnection), Toast.LENGTH_SHORT).show()

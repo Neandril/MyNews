@@ -1,0 +1,5 @@
+
+≈kotlin:S100{"tRename function "buttonNotifications_OpensNotificationsActivity" to match the regular expression ^[a-z][a-zA-Z0-9]*$(и∙Й╞ЧЪЪЪЪ8Яёнтя-
+┴kotlin:S100Y"fRename function "buttonSearch_OpensSearchActivity" to match the regular expression ^[a-z][a-zA-Z0-9]*$(ЙаЫёШЪЪЪЪ8Яёнтя-
+kotlin:S100e"bRename function "buttonHelp_OpensHelpActivity" to match the regular expression ^[a-z][a-zA-Z0-9]*$(Щ█оv8Яёнтя-
+┌kotlin:S100p"dRename function "buttonAbout_OpensAboutActivity" to match the regular expression ^[a-z][a-zA-Z0-9]*$(и ╩к8Яёнтя-
