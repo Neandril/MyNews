@@ -87,8 +87,7 @@ class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
      * Fetch data from the API
      */
     private fun getData() {
-
-        repository.getTestData(object : ArticleCallback {
+        repository.getTopStoriesData(object : ArticleCallback {
             override fun onResponse(model: NYTModel?) {
                 if (model == null) {
                     Toast.makeText(context, getString(R.string.checkConnection), Toast.LENGTH_SHORT).show()

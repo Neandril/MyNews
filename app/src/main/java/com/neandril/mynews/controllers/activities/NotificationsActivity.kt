@@ -1,19 +1,20 @@
 package com.neandril.mynews.controllers.activities
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.*
-import androidx.work.Constraints
-import androidx.work.NetworkType
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
 import com.neandril.mynews.R
-import com.neandril.mynews.utils.MyWorker
+import com.neandril.mynews.utils.AlarmReceiver
+import com.neandril.mynews.utils.paddingZero
 import kotlinx.android.synthetic.main.activity_options.*
 import java.util.*
-import java.util.concurrent.TimeUnit
+
 
 class NotificationsActivity : AppCompatActivity() {
 
@@ -24,6 +25,13 @@ class NotificationsActivity : AppCompatActivity() {
         const val PREFS_SECTIONS = "prefs_sections" // sesctions
         const val PREFS_QUERY = "prefs_query" // queryTerm
     }
+
+    /** Calendar config */
+    private val calendar = Calendar.getInstance()
+    private val year = calendar.get(Calendar.YEAR)
+    private val month = calendar.get(Calendar.MONTH)
+    private val day = calendar.get(Calendar.DAY_OF_MONTH)
+    private val mm = (month + 1).paddingZero()
 
     /** Variables */
     private lateinit var sectionName : String
@@ -77,17 +85,20 @@ class NotificationsActivity : AppCompatActivity() {
                         ?.apply()
 
                     /** Start the worker */
-                    startWorker()
+                    // startWorker()
+                    startAlarm()
                 }
             } else {
                 Toast.makeText(this, R.string.notificationsDisabled, Toast.LENGTH_SHORT).show()
+
                 val editor = prefs?.edit()
                 editor
                     ?.putBoolean(PREFS_TOGGLE, false)
                     ?.putString(PREFS_QUERY, "")
                     ?.putString(PREFS_SECTIONS, "")
                     ?.apply()
-                WorkManager.getInstance().cancelAllWorkByTag("MyTag")
+                cancelAlarm()
+                // WorkManager.getInstance().cancelAllWorkByTag("MyTag")
             }
         }
     }
@@ -157,12 +168,41 @@ class NotificationsActivity : AppCompatActivity() {
                 ?.putString(PREFS_QUERY, queryTerm)
                 ?.putString(PREFS_SECTIONS, getCheckedSections())
                 ?.apply()
+            startAlarm()
         }
+        // startWorker()
+    }
 
-        startWorker()
+    private fun startAlarm() {
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.HOUR_OF_DAY, 12)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.add(Calendar.DATE, 1)
+
+        val alarmManager = applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(this, AlarmReceiver::class.java)
+
+        val pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, 0)
+        alarmManager.setInexactRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            AlarmManager.INTERVAL_DAY,
+            pendingIntent
+        )
+
+    }
+
+    private fun cancelAlarm() {
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(applicationContext, AlarmReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, 0)
+
+        alarmManager.cancel(pendingIntent)
     }
 
     /** Init and run the worker */
+    /**
     private fun startWorker() {
         // Initialize calendars
         val currentDate = Calendar.getInstance()
@@ -202,4 +242,5 @@ class NotificationsActivity : AppCompatActivity() {
         WorkManager.getInstance().enqueue(worker)
         **/
     }
+    **/
 }

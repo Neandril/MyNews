@@ -75,7 +75,12 @@ class NotificationsTest {
     }
 
     @Test
-    fun workeManager_NotificationSent() {
+    fun alarmManager_sendNotification() {
+
+    }
+
+    @Test
+    fun workManager_NotificationSent() {
         val activityMonitor = InstrumentationRegistry.getInstrumentation().addMonitor(
             MyWorker::class.java.name, null, false)
 
