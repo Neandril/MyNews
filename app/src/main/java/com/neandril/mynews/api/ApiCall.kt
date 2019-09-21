@@ -1,7 +1,9 @@
 package com.neandril.mynews.api
 
+import android.os.Build
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
+import com.neandril.mynews.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -36,7 +38,7 @@ object ApiCall {
         // Pass the api key as parameter
         val apiKeyInterceptor = Interceptor { chain ->
             var request = chain.request()
-            val url = request.url().newBuilder().addQueryParameter("api-key", ApiInterface.API_KEY).build()
+            val url = request.url.newBuilder().addQueryParameter("api-key", BuildConfig.API_KEY).build()
             request = request.newBuilder().url(url).build()
             chain.proceed(request)
         }
@@ -49,7 +51,7 @@ object ApiCall {
 
         // Return retrofit call
         return Retrofit.Builder()
-            .baseUrl(ApiInterface.API_BASE_URL)
+            .baseUrl(BuildConfig.API_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()

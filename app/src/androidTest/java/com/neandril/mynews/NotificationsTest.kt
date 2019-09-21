@@ -78,29 +78,4 @@ class NotificationsTest {
     fun alarmManager_sendNotification() {
 
     }
-
-    @Test
-    fun workManager_NotificationSent() {
-        val activityMonitor = InstrumentationRegistry.getInstrumentation().addMonitor(
-            MyWorker::class.java.name, null, false)
-
-        /** Configure notifications */
-        onView(withId(R.id.editText_search_query)).perform(replaceText("trump"))
-        onView(withId(R.id.checkbox_politics)).perform(click())
-        onView(withId(R.id.notifications_switch)).perform(click())
-
-        /** Build the worker immediately */
-        val worker = PeriodicWorkRequest
-            .Builder(MyWorker::class.java, 1, TimeUnit.DAYS)
-            .addTag("TestWorker")
-            .build()
-
-        WorkManager.getInstance().enqueue(worker)
-
-        val nextActivity = InstrumentationRegistry.getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000)
-
-        if(nextActivity == null){
-            onView(withId(R.id.notifications_switch)).check(matches(isEnabled()))
-        }
-    }
 }

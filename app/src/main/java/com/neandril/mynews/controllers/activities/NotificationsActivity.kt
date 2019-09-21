@@ -190,7 +190,6 @@ class NotificationsActivity : AppCompatActivity() {
             AlarmManager.INTERVAL_DAY,
             pendingIntent
         )
-
     }
 
     private fun cancelAlarm() {

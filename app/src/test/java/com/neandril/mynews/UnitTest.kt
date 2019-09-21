@@ -1,12 +1,16 @@
 package com.neandril.mynews
 
+import android.provider.CallLog
+import com.neandril.mynews.api.ApiInterface
 import com.neandril.mynews.models.*
 import org.junit.Before
 import org.junit.Test
+import org.mockito.ArgumentMatchers
 import org.mockito.Mock
-import org.mockito.Mockito.times
-import org.mockito.Mockito.verify
+import org.mockito.Mockito
+import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
+import retrofit2.Call
 
 /**
  * Theses test verify the return of the API call
@@ -28,9 +32,12 @@ UnitTest {
 
     @Test
     fun getTopStories() {
+        val service = mock(ApiInterface::class.java)
+
         repo.getTopStoriesData(object : ArticleCallback {
             override fun onResponse(model: NYTModel?) {
-                verify(repo, times(1).description("TopStories"))
+                // verify(repo, times(1).description("TopStories"))
+                verify(service).topStories()
             }
         })
     }

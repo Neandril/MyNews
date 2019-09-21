@@ -12,13 +12,6 @@ import retrofit2.http.Query
  */
 interface ApiInterface {
 
-    companion object {
-        // NYT API Key
-        const val API_KEY = "aavEEACpR0OtOS8i70CKwCsNJorFyfFf"
-        // API base URL
-        const val API_BASE_URL = "https://api.nytimes.com/svc/"
-    }
-
     /**
      * TopStories API
      */

@@ -1,0 +1,1200 @@
+{
+  "status":"OK",
+  "copyright":"Copyright (c) 2019 The New York Times Company.  All Rights Reserved.",
+  "num_results":1508,
+  "results":[
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/19\/us\/politics\/intelligence-whistle-blower-complaint-trump.html",
+      "adx_keywords":"United States Politics and Government;Classified Information and State Secrets;Espionage and Intelligence Services;Whistle-Blowers;Inspectors General;House Committee on Intelligence;Office of the Director of National Intelligence;Trump, Donald J",
+      "column":null,
+      "section":"U.S.",
+      "byline":"By MATTHEW ROSENBERG, NICHOLAS FANDOS, EILEEN SULLIVAN and JULIAN E. BARNES",
+      "type":"Article",
+      "title":"Whistle-Blower\u2019s Complaint Is Said to Involve Multiple Acts by Trump",
+      "abstract":"The complaint goes beyond a commitment that President Trump was said to have made to a world leader.",
+      "published_date":"2019-09-19",
+      "source":"The New York Times",
+      "id":100000006725973,
+      "asset_id":100000006725973,
+      "views":1,
+      "des_facet":[
+        "UNITED STATES POLITICS AND GOVERNMENT",
+        "CLASSIFIED INFORMATION AND STATE SECRETS"
+      ],
+      "org_facet":[
+        "ESPIONAGE AND INTELLIGENCE SERVICES",
+        "WHISTLE-BLOWERS",
+        "INSPECTORS GENERAL",
+        "HOUSE COMMITTEE ON INTELLIGENCE",
+        "OFFICE OF THE DIRECTOR OF NATIONAL INTELLIGENCE"
+      ],
+      "per_facet":[
+        "TRUMP, DONALD J"
+      ],
+      "geo_facet":"",
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"President Trump regularly speaks with foreign leaders and often takes a freewheeling approach.",
+          "copyright":"Erin Schaff\/The New York Times",
+          "approved_for_syndication":1,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/19\/us\/politics\/19dc-whistleblower-promo1\/19dc-prexy-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/19\/us\/politics\/19dc-whistleblower-promo1\/merlin_161034678_0b6f864f-06d4-43aa-b894-f7570fd81764-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/19\/us\/politics\/19dc-whistleblower-promo1\/merlin_161034678_0b6f864f-06d4-43aa-b894-f7570fd81764-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/9f4efa30-bad0-55fe-a427-0c69c4a6b46c"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/18\/world\/canada\/trudeau-brownface.html",
+      "adx_keywords":"Canadian Federal Election (2019);Trudeau, Justin;Canada;Politics and Government;Discrimination;Race and Ethnicity",
+      "column":null,
+      "section":"World",
+      "byline":"By IAN AUSTEN and DAN BILEFSKY",
+      "type":"Article",
+      "title":"Justin Trudeau Says He Is \u2018Deeply Sorry\u2019 After Brownface Photo Surfaces",
+      "abstract":"Prime Minister Justin Trudeau\u2019s campaign was thrown into turmoil when a photograph surfaced of him in brownface makeup at a 2001 private school party.",
+      "published_date":"2019-09-18",
+      "source":"The New York Times",
+      "id":100000006725619,
+      "asset_id":100000006725619,
+      "views":2,
+      "des_facet":[
+        "CANADIAN FEDERAL ELECTION (2019)",
+        "POLITICS AND GOVERNMENT"
+      ],
+      "org_facet":[
+        "DISCRIMINATION",
+        "RACE AND ETHNICITY"
+      ],
+      "per_facet":[
+        "TRUDEAU, JUSTIN"
+      ],
+      "geo_facet":[
+        "CANADA"
+      ],
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"\u201cI now realize it was racist,\u201d Justin Trudeau said, speaking to reporters after a photo of him in brownface makeup surfaced.",
+          "copyright":"Sean Kilpatrick\/The Canadian Press, via Associated Press",
+          "approved_for_syndication":1,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/business\/18trudeau-sub\/18trudeau-sub-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/business\/18trudeau-sub\/18trudeau-sub-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/business\/18trudeau-sub\/18trudeau-sub-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/a4a9105e-0f14-5db8-a750-25a2fa807760"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/18\/magazine\/boeing-737-max-crashes.html",
+      "adx_keywords":"Aviation Accidents, Safety and Disasters;Boeing 737 Max Groundings and Safety Concerns (2019);Lion Air;Indonesia;Pilots;Boeing Company;Airbus Industrie;Ethiopian Airlines",
+      "column":"Feature",
+      "section":"Magazine",
+      "byline":"By WILLIAM LANGEWIESCHE",
+      "type":"Article",
+      "title":"What Really Brought Down the Boeing 737 Max?",
+      "abstract":"Malfunctions caused two deadly crashes. But an industry that puts unprepared pilots in the cockpit is just as guilty.",
+      "published_date":"2019-09-18",
+      "source":"The New York Times",
+      "id":100000006717413,
+      "asset_id":100000006717413,
+      "views":3,
+      "des_facet":[
+        "AVIATION ACCIDENTS, SAFETY AND DISASTERS",
+        "BOEING 737 MAX GROUNDINGS AND SAFETY CONCERNS (2019)"
+      ],
+      "org_facet":[
+        "LION AIR",
+        "PILOTS",
+        "BOEING COMPANY",
+        "AIRBUS INDUSTRIE",
+        "ETHIOPIAN AIRLINES"
+      ],
+      "per_facet":"",
+      "geo_facet":[
+        "INDONESIA"
+      ],
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"",
+          "copyright":"Photo illustration by Matt Dorfman",
+          "approved_for_syndication":1,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/29\/magazine\/29mag-boeing2\/29mag-boeing2-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/29\/magazine\/29mag-boeing2\/29mag-boeing2-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/29\/magazine\/29mag-boeing2\/29mag-boeing2-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/81cb3ca0-18ad-5d56-8b5d-67885bf25e3d"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/18\/nyregion\/tekashi-69-testifies-testimony-stand-court.html",
+      "adx_keywords":"6ix9ine (Rapper);Gangs;New York City;Rap and Hip-Hop;Manhattan (NYC);Witnesses;Racketeering and Racketeers",
+      "column":null,
+      "section":"New York",
+      "byline":"By ALI WATKINS",
+      "type":"Article",
+      "title":"Dropping the Facade, Tekashi 69 Is Just Daniel Hernandez in Court",
+      "abstract":"There was a stark contrast between the boisterous rapper and the man on the witness stand.",
+      "published_date":"2019-09-18",
+      "source":"The New York Times",
+      "id":100000006724190,
+      "asset_id":100000006724190,
+      "views":4,
+      "des_facet":[
+        "GANGS",
+        "RAP AND HIP-HOP",
+        "WITNESSES",
+        "RACKETEERING AND RACKETEERS"
+      ],
+      "org_facet":"",
+      "per_facet":[
+        "6IX9INE (RAPPER)"
+      ],
+      "geo_facet":[
+        "NEW YORK CITY",
+        "MANHATTAN (NYC)"
+      ],
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"The rapper&rsquo;s former confidantes are on trial as part of a sweeping racketeering case.",
+          "copyright":"Gonzales Photo\/Universal Images Group via Getty Image",
+          "approved_for_syndication":0,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/19\/nyregion\/19TEKASHI-print\/18TEKASHI-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/19\/nyregion\/19TEKASHI-print\/18TEKASHI-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/19\/nyregion\/19TEKASHI-print\/18TEKASHI-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/d92a92bd-b617-57a0-bf34-f22f36bce182"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/19\/science\/bird-populations-america-canada.html",
+      "adx_keywords":"Birds;Endangered and Extinct Species;North America;Animal Migration;Conservation of Resources;Pesticides;Science (Journal);Rosenberg, Kenneth V;Audubon Society, National;American Bird Conservancy;Cornell University;Canada;United States;your-feed-science",
+      "column":"Matter",
+      "section":"Science",
+      "byline":"By CARL ZIMMER",
+      "type":"Article",
+      "title":"Birds Are Vanishing From North America",
+      "abstract":"The number of birds in the United States and Canada has declined by 3 billion, or 29 percent, over the past half-century, scientists find.",
+      "published_date":"2019-09-19",
+      "source":"The New York Times",
+      "id":100000006723061,
+      "asset_id":100000006723061,
+      "views":5,
+      "des_facet":[
+        "BIRDS",
+        "ENDANGERED AND EXTINCT SPECIES",
+        "ANIMAL MIGRATION",
+        "CONSERVATION OF RESOURCES",
+        "YOUR-FEED-SCIENCE"
+      ],
+      "org_facet":[
+        "PESTICIDES",
+        "SCIENCE (JOURNAL)",
+        "AUDUBON SOCIETY, NATIONAL",
+        "AMERICAN BIRD CONSERVANCY",
+        "CORNELL UNIVERSITY"
+      ],
+      "per_facet":[
+        "ROSENBERG, KENNETH V"
+      ],
+      "geo_facet":[
+        "NORTH AMERICA",
+        "CANADA",
+        "UNITED STATES"
+      ],
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"",
+          "copyright":"",
+          "approved_for_syndication":0,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/19\/science\/19SCI-MATTER-BIRDS-sanderling1\/19SCI-MATTER-BIRDS-sanderling-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/19\/science\/19SCI-MATTER-BIRDS-sanderling1\/19SCI-MATTER-BIRDS-sanderling-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/19\/science\/19SCI-MATTER-BIRDS-sanderling1\/19SCI-MATTER-BIRDS-sanderling-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/409f6bb1-5c88-5315-8610-95b1e2122de6"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/17\/nyregion\/ny-teen-murder-oceanside.html",
+      "adx_keywords":"Morris, Khaseen (d 2019);Demonstrations, Protests and Riots;Oceanside (NY);Witnesses;Murders, Attempted Murders and Homicides",
+      "column":null,
+      "section":"New York",
+      "byline":"By SARAH MASLIN NIR and ARIELLE DOLLINGER",
+      "type":"Article",
+      "title":"Oceanside Stabbing: After a Brawl, Teenagers Gawked as a Boy Lay Dying",
+      "abstract":"Shocked officials on Long Island said the teenagers recorded the fight and the victim\u2019s suffering on their phones.",
+      "published_date":"2019-09-17",
+      "source":"The New York Times",
+      "id":100000006721940,
+      "asset_id":100000006721940,
+      "views":6,
+      "des_facet":[
+        "DEMONSTRATIONS, PROTESTS AND RIOTS",
+        "WITNESSES",
+        "MURDERS, ATTEMPTED MURDERS AND HOMICIDES"
+      ],
+      "org_facet":"",
+      "per_facet":[
+        "MORRIS, KHASEEN (D 2019)"
+      ],
+      "geo_facet":[
+        "OCEANSIDE (NY)"
+      ],
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"The after-school brawl began in a parking lot of a strip mall in Oceanside in Long Island, and was precipitated by a dispute over a girl, the police said.",
+          "copyright":"Jim Staubitser",
+          "approved_for_syndication":0,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/nyregion\/18LIkilling1-print\/merlin_160966395_774ef844-5182-4804-ab29-55f232435efb-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/nyregion\/18LIkilling1-print\/merlin_160966395_774ef844-5182-4804-ab29-55f232435efb-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/nyregion\/18LIkilling1-print\/merlin_160966395_774ef844-5182-4804-ab29-55f232435efb-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/eb41df86-12e8-5b93-aae2-5d240ca0ef57"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/17\/style\/women-poop-at-work.html",
+      "adx_keywords":"Workplace Environment;Bathrooms and Toilets;Women and Girls;Anxiety and Stress;your-feed-work;your-feed-selfcare",
+      "column":"The office: AN ANALYSIS",
+      "section":"Style",
+      "byline":"By JESSICA BENNETT and AMANDA MCCALL",
+      "type":"Article",
+      "title":"Women Poop. Sometimes At Work. Get Over It.",
+      "abstract":"Why must the bathroom continue to be fraught?",
+      "published_date":"2019-09-17",
+      "source":"The New York Times",
+      "id":100000006648928,
+      "asset_id":100000006648928,
+      "views":7,
+      "des_facet":[
+        "WORKPLACE ENVIRONMENT",
+        "BATHROOMS AND TOILETS",
+        "WOMEN AND GIRLS",
+        "YOUR-FEED-WORK",
+        "YOUR-FEED-SELFCARE"
+      ],
+      "org_facet":[
+        "ANXIETY AND STRESS"
+      ],
+      "per_facet":"",
+      "geo_facet":"",
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"",
+          "copyright":"Illustration by Shannon Lin\/The New York Times",
+          "approved_for_syndication":1,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/fashion\/17office-bathroom-1\/17office-bathroom-1-thumbStandard.png",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/fashion\/17office-bathroom-1\/17office-bathroom-1-mediumThreeByTwo210.png",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/fashion\/17office-bathroom-1\/17office-bathroom-1-mediumThreeByTwo440.png",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/9952ece5-8e8c-5970-b196-873fe2ebb958"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/17\/climate\/trump-california-emissions-waiver.html",
+      "adx_keywords":"California;Fuel Emissions (Transportation);Fuel Efficiency;Automobiles;Regulation and Deregulation of Industry;Federal-State Relations (US);Clean Air Act;Environmental Protection Agency;Global Warming;Trump, Donald J;United States Politics and Government",
+      "column":null,
+      "section":"Climate",
+      "byline":"By CORAL DAVENPORT",
+      "type":"Article",
+      "title":"Trump to Revoke California\u2019s Authority to Set Stricter Auto Emissions Rules",
+      "abstract":"The move, expected Wednesday, would strip California of its special authority to set tougher rules on car emissions.\u00a0",
+      "published_date":"2019-09-17",
+      "source":"The New York Times",
+      "id":100000006722081,
+      "asset_id":100000006722081,
+      "views":8,
+      "des_facet":[
+        "FUEL EMISSIONS (TRANSPORTATION)",
+        "FUEL EFFICIENCY",
+        "GLOBAL WARMING",
+        "UNITED STATES POLITICS AND GOVERNMENT"
+      ],
+      "org_facet":[
+        "AUTOMOBILES",
+        "REGULATION AND DEREGULATION OF INDUSTRY",
+        "FEDERAL-STATE RELATIONS (US)",
+        "CLEAN AIR ACT",
+        "ENVIRONMENTAL PROTECTION AGENCY"
+      ],
+      "per_facet":[
+        "TRUMP, DONALD J"
+      ],
+      "geo_facet":[
+        "CALIFORNIA"
+      ],
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"",
+          "copyright":"David Paul Morris\/Bloomberg",
+          "approved_for_syndication":1,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/climate\/17CLI-EMISSIONS1\/17CLI-EMISSIONS1-thumbStandard-v2.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/climate\/17CLI-EMISSIONS1\/17CLI-EMISSIONS1-mediumThreeByTwo210-v3.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/climate\/17CLI-EMISSIONS1\/17CLI-EMISSIONS1-mediumThreeByTwo440-v3.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/2c841368-81f3-5f98-b8a9-e7147a4e4f03"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/interactive\/2019\/09\/19\/business\/brexit-food-supply.html",
+      "adx_keywords":"Great Britain Withdrawal from EU (Brexit);Food;International Trade and World Market;Tomatoes;Sicily (Italy);England",
+      "column":"",
+      "section":"Business",
+      "byline":"By AMIE TSANG",
+      "type":"Interactive",
+      "title":"How Brexit Could Break Britain\u2019s Food Chain",
+      "abstract":"Getting a fresh tomato to Britain from Sicily involves dozens of people, transfer stops, several truck trips and two boat rides. Brexit uncertainty could mean days-long border delays \u2014 and rotten produce.",
+      "published_date":"2019-09-19",
+      "source":"The New York Times",
+      "id":100000006709870,
+      "asset_id":100000006709870,
+      "views":9,
+      "des_facet":[
+        "FOOD",
+        "TOMATOES"
+      ],
+      "org_facet":[
+        "GREAT BRITAIN WITHDRAWAL FROM EU (BREXIT)",
+        "INTERNATIONAL TRADE AND WORLD MARKET"
+      ],
+      "per_facet":"",
+      "geo_facet":[
+        "SICILY (ITALY)",
+        "ENGLAND"
+      ],
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"",
+          "copyright":"Suzie Howell for The New York Times",
+          "approved_for_syndication":1,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/16\/world\/00tomatoes-tap-promo\/00tomatoes-tap-promo-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/16\/world\/00tomatoes-tap-promo\/00tomatoes-tap-promo-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/16\/world\/00tomatoes-tap-promo\/00tomatoes-tap-promo-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/interactive\/c5b65dc3-416f-5c46-bea1-23f0a96432d8"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/18\/business\/economy\/fed-interest-rate-cut.html",
+      "adx_keywords":"Federal Reserve System;Interest Rates;United States Economy;Labor and Jobs;Inflation (Economics);Recession and Depression;Federal Open Market Committee;United States Politics and Government;Powell, Jerome H;Trump, Donald J",
+      "column":null,
+      "section":"Business",
+      "byline":"By JEANNA SMIALEK",
+      "type":"Article",
+      "title":"Fed Cuts Interest Rates by Another Quarter Point",
+      "abstract":"The Federal Reserve cut rates for the second time since July as risks to the economic outlook mounted. Its policy continued to anger President Trump.",
+      "published_date":"2019-09-18",
+      "source":"The New York Times",
+      "id":100000006724359,
+      "asset_id":100000006724359,
+      "views":10,
+      "des_facet":[
+        "INTEREST RATES",
+        "UNITED STATES ECONOMY",
+        "LABOR AND JOBS",
+        "INFLATION (ECONOMICS)",
+        "RECESSION AND DEPRESSION"
+      ],
+      "org_facet":[
+        "FEDERAL RESERVE SYSTEM",
+        "FEDERAL OPEN MARKET COMMITTEE",
+        "UNITED STATES POLITICS AND GOVERNMENT"
+      ],
+      "per_facet":[
+        "POWELL, JEROME H",
+        "TRUMP, DONALD J"
+      ],
+      "geo_facet":"",
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"Jerome H. Powell, the Federal Reserve Chair, said the central bank was cutting interest rates for a second time to help insulate the American economy against risks from President Trump\u2019s trade war, slowing global growth and Britain\u2019s exit from the European Union.",
+          "copyright":"Melissa Lyttle for The New York Times",
+          "approved_for_syndication":1,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/business\/18dc-fed2\/18dc-fed2-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/business\/18dc-fed2\/18dc-fed2-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/business\/18dc-fed2\/18dc-fed2-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/cd50563e-0194-574b-a663-9d8deedaa234"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/17\/world\/middleeast\/israel-election-netanyahu.html",
+      "adx_keywords":"Israel;Elections;Netanyahu, Benjamin;Gantz, Benny;Lieberman, Avigdor;Likud Party (Israel);Blue and White (Israeli Political Party);Joint List (Israel);Politics and Government",
+      "column":null,
+      "section":"World",
+      "byline":"By DAVID M. HALBFINGER and ISABEL KERSHNER",
+      "type":"Article",
+      "title":"After Tight Israeli Election, Netanyahu\u2019s Tenure Appears Perilous",
+      "abstract":"The winner of Israel\u2019s do-over election was too close to call early Wednesday, but exit polls pointed to serious obstacles for Prime Minister Benjamin Netanyahu.",
+      "published_date":"2019-09-17",
+      "source":"The New York Times",
+      "id":100000006721656,
+      "asset_id":100000006721656,
+      "views":11,
+      "des_facet":[
+        "ELECTIONS",
+        "POLITICS AND GOVERNMENT"
+      ],
+      "org_facet":[
+        "LIKUD PARTY (ISRAEL)",
+        "BLUE AND WHITE (ISRAELI POLITICAL PARTY)",
+        "JOINT LIST (ISRAEL)"
+      ],
+      "per_facet":[
+        "NETANYAHU, BENJAMIN",
+        "GANTZ, BENNY",
+        "LIEBERMAN, AVIGDOR"
+      ],
+      "geo_facet":[
+        "ISRAEL"
+      ],
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"Prime Minister Benjamin Netanyahu of Israel addressing supporters at his Likud party\u2019s campaign headquarters early Wednesday.",
+          "copyright":"Sergey Ponomarev for The New York Times",
+          "approved_for_syndication":1,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/world\/17israel-final\/17israel-final-thumbStandard-v3.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/world\/17israel-final\/17israel-final-mediumThreeByTwo210-v5.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/world\/17israel-final\/17israel-final-mediumThreeByTwo440-v5.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/bb3b8edf-e495-5128-944b-12c7d5f72490"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/17\/style\/generation-z-millennials-work-life-balance.html",
+      "adx_keywords":"Work-Life Balance;Paid Time Off;Labor and Jobs;Millennial Generation;Workplace Environment;Generation Z;your-feed-work",
+      "column":"The office: AN ANALYSIS",
+      "section":"Style",
+      "byline":"By CLAIRE CAIN MILLER and SANAM YAR",
+      "type":"Article",
+      "title":"Young People Are Going to Save Us All From Office Life",
+      "abstract":"Gen Z-ers and millennials have been called lazy and entitled. Could they, instead, be among the first to understand the proper role of work in life?",
+      "published_date":"2019-09-17",
+      "source":"The New York Times",
+      "id":100000006648919,
+      "asset_id":100000006648919,
+      "views":12,
+      "des_facet":[
+        "WORK-LIFE BALANCE",
+        "PAID TIME OFF",
+        "GENERATION Z",
+        "YOUR-FEED-WORK"
+      ],
+      "org_facet":[
+        "LABOR AND JOBS",
+        "MILLENNIAL GENERATION",
+        "WORKPLACE ENVIRONMENT"
+      ],
+      "per_facet":"",
+      "geo_facet":"",
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"",
+          "copyright":"Illustration by Shannon Lin\/The New York Times",
+          "approved_for_syndication":1,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/fashion\/17office-generations-1\/17office-generations-1-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/fashion\/17office-generations-1\/17office-generations-1-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/fashion\/17office-generations-1\/17office-generations-1-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/22d115b5-247a-5c5d-99eb-5479bf4812fa"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/18\/us\/politics\/robert-obrien-security-adviser.html",
+      "adx_keywords":"Trump, Donald J;O'Brien, Robert C (1952- );Appointments and Executive Changes;Iran;United States International Relations;United States Defense and Military Forces;National Security Council;Bolton, John R;United States Politics and Government",
+      "column":null,
+      "section":"U.S.",
+      "byline":"By PETER BAKER and ERIC SCHMITT",
+      "type":"Article",
+      "title":"Trump Weighs Retaliation Against Iran and Names National Security Adviser",
+      "abstract":"To help sort through the options \u2014 including sanctions and the deployment of more American forces \u2014 the president chose Robert C. O\u2019Brien, the State Department\u2019s chief hostage negotiator.",
+      "published_date":"2019-09-18",
+      "source":"The New York Times",
+      "id":100000006724191,
+      "asset_id":100000006724191,
+      "views":13,
+      "des_facet":[
+        "UNITED STATES INTERNATIONAL RELATIONS",
+        "UNITED STATES DEFENSE AND MILITARY FORCES",
+        "UNITED STATES POLITICS AND GOVERNMENT"
+      ],
+      "org_facet":[
+        "APPOINTMENTS AND EXECUTIVE CHANGES",
+        "NATIONAL SECURITY COUNCIL"
+      ],
+      "per_facet":[
+        "TRUMP, DONALD J",
+        "O'BRIEN, ROBERT C (1952- )",
+        "BOLTON, JOHN R"
+      ],
+      "geo_facet":[
+        "IRAN"
+      ],
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"Robert C. O\u2019Brien takes over the national security portfolio as President Trump faces a decision over how to respond to last weekend\u2019s attacks on Saudi oil facilities.",
+          "copyright":"Erin Schaff\/The New York Times",
+          "approved_for_syndication":1,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/multimedia\/18prexy-sub\/merlin_161014392_9a236858-e463-45a0-b3e4-16f5efe7d327-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/multimedia\/18prexy-sub\/merlin_161014392_9a236858-e463-45a0-b3e4-16f5efe7d327-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/multimedia\/18prexy-sub\/merlin_161014392_9a236858-e463-45a0-b3e4-16f5efe7d327-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/cd7eec68-07f7-5169-add8-fb9648c8d2bf"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/17\/nyregion\/tekashi-69-testifying-court-trial.html",
+      "adx_keywords":"Rap and Hip-Hop;6ix9ine (Rapper);Racketeering and Racketeers;Manhattan (NYC);Gangs;Plea Bargaining;Assaults",
+      "column":null,
+      "section":"New York",
+      "byline":"By ALI WATKINS",
+      "type":"Article",
+      "title":"\u2018Robberies, Assaults, Drugs\u2019: Tekashi 69 Testifies Against Former Crew",
+      "abstract":"\u201cWe participated in a lot of crimes,\u201d the rapper said Tuesday.",
+      "published_date":"2019-09-17",
+      "source":"The New York Times",
+      "id":100000006719590,
+      "asset_id":100000006719590,
+      "views":14,
+      "des_facet":[
+        "RAP AND HIP-HOP",
+        "RACKETEERING AND RACKETEERS",
+        "GANGS",
+        "PLEA BARGAINING",
+        "ASSAULTS"
+      ],
+      "org_facet":"",
+      "per_facet":[
+        "6IX9INE (RAPPER)"
+      ],
+      "geo_facet":[
+        "MANHATTAN (NYC)"
+      ],
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"The rapper admitted in court to being a member of a gang, which he said engaged in &ldquo;shooting at people, robbing people and, at times, drug trafficking.&rdquo;",
+          "copyright":"SMXRF\/Star Max\/GC Images",
+          "approved_for_syndication":0,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/nyregion\/18tekashi-print\/merlin_160953540_e97130fa-0708-4a02-82a0-9b144fb5e905-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/nyregion\/18tekashi-print\/merlin_160953540_e97130fa-0708-4a02-82a0-9b144fb5e905-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/nyregion\/18tekashi-print\/merlin_160953540_e97130fa-0708-4a02-82a0-9b144fb5e905-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/a2d5a0eb-1987-54d3-870f-866240060c4a"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/18\/us\/politics\/impeachment-democrats-nadler-lewandowski.html",
+      "adx_keywords":"United States Politics and Government;House Committee on the Judiciary;Lewandowski, Corey (1975- );Collins, Douglas A (1966- );Nadler, Jerrold;Impeachment;Democratic Party",
+      "column":null,
+      "section":"U.S.",
+      "byline":"By NICHOLAS FANDOS",
+      "type":"Article",
+      "title":"This Picture Tells You Everything You Need to Know About Impeachment",
+      "abstract":"A Renaissance-style tableau for a divided Washington.",
+      "published_date":"2019-09-18",
+      "source":"The New York Times",
+      "id":100000006725005,
+      "asset_id":100000006725005,
+      "views":15,
+      "des_facet":[
+        "UNITED STATES POLITICS AND GOVERNMENT",
+        "IMPEACHMENT"
+      ],
+      "org_facet":[
+        "HOUSE COMMITTEE ON THE JUDICIARY",
+        "DEMOCRATIC PARTY"
+      ],
+      "per_facet":[
+        "LEWANDOWSKI, COREY (1975- )",
+        "COLLINS, DOUGLAS A (1966- )",
+        "NADLER, JERROLD"
+      ],
+      "geo_facet":"",
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"",
+          "copyright":"Doug Mills\/The New York Times",
+          "approved_for_syndication":1,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/us\/politics\/18dc-impeach\/18dc-impeach-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/us\/politics\/18dc-impeach\/18dc-impeach-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/us\/politics\/18dc-impeach\/18dc-impeach-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/c68e4f02-4b40-522b-8e52-b7f54696ba33"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/17\/obituaries\/cokie-roberts-dead.html",
+      "adx_keywords":"Roberts, Cokie;Deaths (Obituaries);News and News Media;National Public Radio;ABC News",
+      "column":null,
+      "section":"Business",
+      "byline":"By NEIL GENZLINGER",
+      "type":"Article",
+      "title":"Cokie Roberts Dies; Veteran Broadcast Journalist Was 75",
+      "abstract":"She was known to millions for her pioneering work for ABC News and NPR.",
+      "published_date":"2019-09-17",
+      "source":"The New York Times",
+      "id":100000006721905,
+      "asset_id":100000006721905,
+      "views":16,
+      "des_facet":[
+        "DEATHS (OBITUARIES)",
+        "NEWS AND NEWS MEDIA"
+      ],
+      "org_facet":[
+        "NATIONAL PUBLIC RADIO",
+        "ABC NEWS"
+      ],
+      "per_facet":[
+        "ROBERTS, COKIE"
+      ],
+      "geo_facet":"",
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"Cokie Roberts reporting on the presidential election for ABC News in 2012.",
+          "copyright":"Donna Svennevik\/ABC",
+          "approved_for_syndication":0,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/obituaries\/17roberts1-promo\/17roberts1-promo-thumbStandard-v2.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/obituaries\/17roberts1-promo\/17roberts1-promo-mediumThreeByTwo210-v6.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/obituaries\/17roberts1-promo\/17roberts1-promo-mediumThreeByTwo440-v6.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/f93de7cb-0f16-551d-8ff9-ea8047ec78ea"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/18\/us\/new-mexico-free-college-tuition.html",
+      "adx_keywords":"New Mexico;Colleges and Universities;Tuition;Grisham, Michelle Lujan;University of New Mexico;Politics and Government",
+      "column":null,
+      "section":"U.S.",
+      "byline":"By SIMON ROMERO and DANA GOLDSTEIN",
+      "type":"Article",
+      "title":"New Mexico Announces Plan for Free College for State Residents",
+      "abstract":"Under the plan, tuition to all state colleges would be free for students regardless of family income.",
+      "published_date":"2019-09-18",
+      "source":"The New York Times",
+      "id":100000006722657,
+      "asset_id":100000006722657,
+      "views":17,
+      "des_facet":[
+        "COLLEGES AND UNIVERSITIES",
+        "POLITICS AND GOVERNMENT"
+      ],
+      "org_facet":[
+        "TUITION",
+        "UNIVERSITY OF NEW MEXICO"
+      ],
+      "per_facet":[
+        "GRISHAM, MICHELLE LUJAN"
+      ],
+      "geo_facet":[
+        "NEW MEXICO"
+      ],
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"New Mexico State University in Las Cruces, N.M. The state is unveiling a proposal to make in-state tuition free at its public colleges and universities.",
+          "copyright":"Cengiz Yar for The New York Times",
+          "approved_for_syndication":1,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/us\/18NEWMEXICO\/18NEWMEXICO-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/us\/18NEWMEXICO\/18NEWMEXICO-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/us\/18NEWMEXICO\/18NEWMEXICO-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/515939e2-0cb4-544f-a96a-0f9736d501fd"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/18\/climate\/greta-thunberg.html",
+      "adx_keywords":"Thunberg, Greta;House of Representatives;Global Warming;Environment;United States Politics and Government",
+      "column":null,
+      "section":"Climate",
+      "byline":"By SOMINI SENGUPTA",
+      "type":"Article",
+      "title":"Greta Thunberg, on Tour in America, Offers an Unvarnished View",
+      "abstract":"With her typically blunt, often biting remarks, the Swedish teenager has offered Americans an outsider\u2019s view of themselves.",
+      "published_date":"2019-09-18",
+      "source":"The New York Times",
+      "id":100000006724852,
+      "asset_id":100000006724852,
+      "views":18,
+      "des_facet":[
+        "GLOBAL WARMING",
+        "ENVIRONMENT"
+      ],
+      "org_facet":"",
+      "per_facet":"",
+      "geo_facet":"",
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"",
+          "copyright":"Anna Moneymaker\/The New York Times",
+          "approved_for_syndication":1,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/climate\/18CLI-GRETA-promo\/18CLI-GRETA-promo-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/climate\/18CLI-GRETA-promo\/18CLI-GRETA-promo-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/climate\/18CLI-GRETA-promo\/18CLI-GRETA-promo-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/785b62b8-c2ee-5f82-8ded-d85b07c08c0f"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/17\/arts\/television\/bachelor-in-paradise-finale-demi-kristian-engaged.html",
+      "adx_keywords":"Reality Television;Bachelor in Paradise (TV Program);Haggerty, Kristian;Burnett, Demi;Dating and Relationships;Homosexuality and Bisexuality;Weddings and Engagements;ABC Inc;The Bachelor (TV Program);The Bachelorette (TV Program);Harrison, Chris (1971- )",
+      "column":"On Television",
+      "section":"Arts",
+      "byline":"By MAYA SALAM",
+      "type":"Article",
+      "title":"A Same-Sex Couple Changes Bachelor Nation",
+      "abstract":"Demi Burnett and Kristian Haggerty\u2019s love story on \u201cBachelor in Paradise\u201d was handled with nuance and authenticity, two words that run counter to the show\u2019s reputation.",
+      "published_date":"2019-09-17",
+      "source":"The New York Times",
+      "id":100000006719664,
+      "asset_id":100000006719664,
+      "views":19,
+      "des_facet":"",
+      "org_facet":[
+        "REALITY TELEVISION",
+        "DATING AND RELATIONSHIPS",
+        "HOMOSEXUALITY AND BISEXUALITY",
+        "WEDDINGS AND ENGAGEMENTS",
+        "ABC INC"
+      ],
+      "per_facet":[
+        "HAGGERTY, KRISTIAN",
+        "BURNETT, DEMI",
+        "HARRISON, CHRIS (1971- )"
+      ],
+      "geo_facet":"",
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"Kristian Haggerty, left, and Demi Burnett are \u201cThe Bachelor\u201d franchise\u2019s first same-sex couple. Burnett proposed to Haggerty in the season finale Tuesday.",
+          "copyright":"John Fleenor\/ABC",
+          "approved_for_syndication":0,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/arts\/17paradise-art1\/17paradise-art1-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/arts\/17paradise-art1\/17paradise-art1-mediumThreeByTwo210-v4.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/17\/arts\/17paradise-art1\/17paradise-art1-mediumThreeByTwo440-v4.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/4774b4d5-ca13-5078-97ac-2aa51e489cb6"
+    },
+    {
+      "url":"https:\/\/www.nytimes.com\/2019\/09\/18\/opinion\/assault-rifle-ban.html",
+      "adx_keywords":"Gun Control;Mass Shootings;Firearms;Second Amendment (US Constitution);Democratic Party;Republican Party;Senate;Carlson, Tucker;Erickson, Erick;United States",
+      "column":null,
+      "section":"Opinion",
+      "byline":"By WILL WILKINSON",
+      "type":"Article",
+      "title":"Why an Assault Weapons Ban Hits Such a Nerve With Many Conservatives",
+      "abstract":"The premise of Trumpist populism is that the political preferences of a shrinking minority of citizens matter more than democracy.",
+      "published_date":"2019-09-18",
+      "source":"The New York Times",
+      "id":100000006721781,
+      "asset_id":100000006721781,
+      "views":20,
+      "des_facet":[
+        "GUN CONTROL",
+        "MASS SHOOTINGS",
+        "FIREARMS"
+      ],
+      "org_facet":[
+        "SECOND AMENDMENT (US CONSTITUTION)",
+        "DEMOCRATIC PARTY",
+        "REPUBLICAN PARTY",
+        "SENATE"
+      ],
+      "per_facet":[
+        "CARLSON, TUCKER",
+        "ERICKSON, ERICK"
+      ],
+      "geo_facet":[
+        "UNITED STATES"
+      ],
+      "media":[
+        {
+          "type":"image",
+          "subtype":"photo",
+          "caption":"A woman with an assault rifle at a booth at the annual National Rifle Association convention in April in Indianapolis.",
+          "copyright":"Scott Olson\/Getty Images",
+          "approved_for_syndication":1,
+          "media-metadata":[
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/opinion\/18wilkinson\/18wilkinson-thumbStandard.jpg",
+              "format":"Standard Thumbnail",
+              "height":75,
+              "width":75
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/opinion\/18wilkinson\/18wilkinson-mediumThreeByTwo210.jpg",
+              "format":"mediumThreeByTwo210",
+              "height":140,
+              "width":210
+            },
+            {
+              "url":"https:\/\/static01.nyt.com\/images\/2019\/09\/18\/opinion\/18wilkinson\/18wilkinson-mediumThreeByTwo440.jpg",
+              "format":"mediumThreeByTwo440",
+              "height":293,
+              "width":440
+            }
+          ]
+        }
+      ],
+      "uri":"nyt:\/\/article\/92fd2dca-48b0-5529-9298-7d76311f5f25"
+    }
+  ]
+}

@@ -66,7 +66,7 @@
     <string name="help_tips_title">Some useful things you may consider when using this application</string>
     <string-array name="help_tips">
         <item>• When an article is read, it became highlightened.</item>
-        <item>• Notifications are set around 18 o\'clock each days.</item>
+        <item>• Notifications are set around midday each days.</item>
         <item>• If you want to modify your notifications preferences, you do not have to disable it and enable it again : just leave the page (back button for example) is enough.</item>
         <item>• On the search screen, if a date field isn\'t filled, the default date is today\'s.</item>
         <item>• Research queries needs to be comma-separated. Every spaces in the query are automatically replaced by a comma.</item>
