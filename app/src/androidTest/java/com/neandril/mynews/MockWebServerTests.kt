@@ -13,9 +13,7 @@ import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okhttp3.mockwebserver.RecordedRequest
-import org.hamcrest.core.AllOf.allOf
 import org.junit.After
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
@@ -34,11 +32,6 @@ class MockWebServerTests {
         MainActivity::class.java, false, false
     )
 
-    @Before
-    fun setUp() {
-
-    }
-
     @Test
     fun shouldDisplayTopStoriesTab() {
         activityRule.launchActivity(null)
@@ -47,21 +40,22 @@ class MockWebServerTests {
     }
 
     @Test
-    fun firstTest() {
+    fun shouldDisplayRequestIfResponseCodeSuccesful() {
         val mockDispatcher: Dispatcher = object : Dispatcher() {
             override fun dispatch(request: RecordedRequest): MockResponse {
                 Log.d("PATH", "PATH ${request.path}")
-                return MockResponse().setResponseCode(200).setBody(AssetReaderUtil.asset(InstrumentationRegistry.getInstrumentation().context, "request.json"))
+                return MockResponse().setResponseCode(200)
+                    .setBody(AssetReaderUtil.asset(InstrumentationRegistry.getInstrumentation().context, "request.json"))
             }
         }
 
         mockServer.dispatcher = mockDispatcher
         mockServer.start(9000)
 
+        /** Run the activity */
         activityRule.launchActivity(null)
-        Thread.sleep(2000)
-        onView(withText("Whistle-Blower’s Complaint Is Said to Involve Multiple Acts by Trump")).check(matches(
-        isDisplayed()))
+
+        onView(withId(R.id.topStories_RecyclerView)).check(matches(hasDescendant(withText("Whistle-Blower’s Complaint Is Said to Involve Multiple Acts by Trump"))))
     }
 
     @After
