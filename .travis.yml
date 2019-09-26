@@ -13,16 +13,18 @@ android:
     - sys-img-armeabi-v7a-android-25
 
 before_install:
-    # Take control of gradlew file
-    - chmod +x gradlew
     # Set up sdkmanager
     - yes | sdkmanager "platforms;android-28"
 
-before_script:
+before_script:    
+    # Take control of gradlew file
+    - chmod +x gradlew
     # Run emulator
     - echo no | android create avd --force -n test -t android-$EMULATOR_API_LEVEL --abi $ANDROID_ABI
     - emulator -avd test -no-audio -no-window &
     - android-wait-for-emulator
+    - ./gradlew connectedCheck
+    - ./gradlew test
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
