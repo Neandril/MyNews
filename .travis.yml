@@ -13,6 +13,9 @@ android:
     - sys-img-armeabi-v7a-android-25
 
 before_install:
+    # Take control of gradlew file
+    - chmod +x gradlew
+    # Set up sdkmanager
     - yes | sdkmanager "platforms;android-28"
 
 before_script:
