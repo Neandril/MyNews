@@ -1,6 +1,5 @@
 package com.neandril.mynews
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
 import android.support.test.InstrumentationRegistry
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.assertion.ViewAssertions.matches
@@ -16,15 +15,10 @@ import okhttp3.mockwebserver.RecordedRequest
 import org.junit.After
 import org.junit.Rule
 import org.junit.Test
-import org.junit.rules.TestRule
 
 class MockWebServerTests {
 
     private val mockServer = MockWebServer()
-    private lateinit var mActivity: MainActivity
-
-    @get:Rule
-    var rule: TestRule = InstantTaskExecutorRule()
 
     @Rule
     @JvmField
@@ -40,7 +34,7 @@ class MockWebServerTests {
     }
 
     @Test
-    fun shouldDisplayRequestIfResponseCodeSuccesful() {
+    fun shouldDisplayRequestIfResponseCodeSuccessful() {
         val mockDispatcher: Dispatcher = object : Dispatcher() {
             override fun dispatch(request: RecordedRequest): MockResponse {
                 Log.d("PATH", "PATH ${request.path}")
@@ -55,7 +49,12 @@ class MockWebServerTests {
         /** Run the activity */
         activityRule.launchActivity(null)
 
-        onView(withId(R.id.topStories_RecyclerView)).check(matches(hasDescendant(withText("Whistle-Blower’s Complaint Is Said to Involve Multiple Acts by Trump"))))
+        onView(withId(R.id.topStories_RecyclerView))
+            .check(matches(
+                hasDescendant(
+                    withText("Whistle-Blower’s Complaint Is Said to Involve Multiple Acts by Trump")
+                )
+            ))
     }
 
     @After

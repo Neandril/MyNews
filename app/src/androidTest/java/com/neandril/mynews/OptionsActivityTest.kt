@@ -1,9 +1,10 @@
 package com.neandril.mynews
 
 import android.support.test.InstrumentationRegistry
+import android.support.test.espresso.Espresso
 import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import android.support.test.espresso.action.ViewActions.click
+import android.support.test.espresso.action.ViewActions.replaceText
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
@@ -11,6 +12,7 @@ import android.support.test.runner.AndroidJUnit4
 import android.util.Log
 import com.neandril.AssetReaderUtil
 import com.neandril.mynews.controllers.activities.MainActivity
+import com.neandril.mynews.controllers.activities.ResultsActivity
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -22,8 +24,12 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/**
+ * UI Tests for SearchActivity and NotificationsActivity
+ */
+
 @RunWith(AndroidJUnit4::class)
-class MainActivityTest {
+class OptionsActivityTest {
 
     private val mockServer = MockWebServer()
     private lateinit var mActivity: MainActivity
@@ -31,7 +37,8 @@ class MainActivityTest {
     /**
      * Setup the Tests Rules
      */
-    @Rule @JvmField
+    @Rule
+    @JvmField
     var activityRule = ActivityTestRule<MainActivity>(
         MainActivity::class.java
     )
@@ -55,54 +62,57 @@ class MainActivityTest {
     }
 
     /**
-     * Test that the tabs are visible
+     * Test search activity behavior
      */
     @Test
     @Throws (Exception::class)
-    fun tabsVisible() {
-        onView(withId(R.id.tabs)).check(matches(isDisplayed()))
-    }
-
-    /**
-     * Test if the Search button opens the correct activity
-     */
-    @Test @Throws (Exception::class)
-    fun buttonSearch_OpensSearchActivity() {
+    fun searchActivity_displaysWarningMessage_orNextActivity() {
         onView(withId(R.id.action_search)).check(matches(isDisplayed()))
         onView(withId(R.id.action_search)).perform(click())
         onView(withId(R.id.editText_search_query)).check(matches(isDisplayed()))
         onView(withId(R.id.notifications_switch)).check(matches(not(isDisplayed())))
+
+        val activityMonitor = InstrumentationRegistry.getInstrumentation().addMonitor(ResultsActivity::class.java.name, null, false)
+
+        /** Input "trump" for the search field */
+        onView(withId(R.id.editText_search_query)).perform(replaceText("trump"))
+
+        /** Click on search button */
+        onView(withId(R.id.button_search)).perform(click())
+
+        val nextActivity = InstrumentationRegistry.getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000)
+
+        /** Make sure at least one checkbox is checked */
+        if(nextActivity == null){
+            onView(withId(R.id.checkbox_politics)).perform(click())
+            onView(withId(R.id.button_search)).perform(click())
+        }
+
+        // Check nextActivity recyclerview
+        // onView(withId(R.id.results_recyclerView)).check(matches(isDisplayed()))
     }
 
     /**
-     * Test if the Help button opens the correct activity
+     * Test NotificationsActivity behavior
      */
-    @Test @Throws (Exception::class)
-    fun buttonHelp_OpensHelpActivity() {
-        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext())
-        onView(withText(mActivity.getString(R.string.action_help))).perform(click())
-        onView(withId(R.id.imageView)).check(matches(isDisplayed()))
-    }
-
-    /**
-     * Test if the About button opens the correct activity
-     */
-    @Test @Throws (Exception::class)
-    fun buttonAbout_OpensAboutActivity() {
-        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext())
-        onView(withText(mActivity.getString(R.string.action_about))).perform(click())
-        onView(withId(R.id.imageView)).check(matches(isDisplayed()))
-    }
-
-    /**
-     * Test if the Notification Button opens the correct activity
-     */
-    @Test @Throws(Exception::class)
-    fun buttonNotifications_OpensNotificationsActivity() {
-        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext())
+    @Test
+    fun notificationSwitch_displaysWarningMessage_orEnableNotifications() {
+        Espresso.openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext())
         onView(withText(mActivity.getString(R.string.notifications))).perform(click())
         onView(withId(R.id.editText_search_query)).check(matches(isDisplayed()))
         onView(withId(R.id.notifications_switch)).check(matches(isDisplayed()))
+
+        Thread.sleep(5000)
+
+        /** Try to enable the switch : it can't be enabled */
+        onView(withId(R.id.notifications_switch)).perform(click())
+        onView(withId(R.id.notifications_switch)).check(matches(not(isChecked())))
+
+        /** Input "someText" on the field, and check a box : the switch can now be enabled */
+        onView(withId(R.id.editText_search_query)).perform(replaceText("someText"))
+        onView(withId(R.id.checkbox_arts)).perform(click())
+        onView(withId(R.id.notifications_switch)).perform(click())
+        onView(withId(R.id.notifications_switch)).check(matches(isChecked()))
     }
 
     @After
