@@ -39,6 +39,7 @@ interface ApiInterface {
         @Query("begin_date") beginDate: String,
         @Query("end_date") endDate: String,
         @Query("fq") sections: String,
+        @Query("facet_fields") facet_fields: String,
         @Query("page") page: Int,
         @Query("sort") sort: String
     ): Call<NYTSearchResultsModel>
