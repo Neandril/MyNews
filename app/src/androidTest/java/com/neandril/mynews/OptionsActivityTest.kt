@@ -48,16 +48,6 @@ class OptionsActivityTest {
      */
     @Before
     fun before() {
-        val mockDispatcher: Dispatcher = object : Dispatcher() {
-            override fun dispatch(request: RecordedRequest): MockResponse {
-                Log.d("PATH", "PATH ${request.path}")
-                return MockResponse().setResponseCode(200)
-                    .setBody(AssetReaderUtil.asset(InstrumentationRegistry.getInstrumentation().context, "request.json"))
-            }
-        }
-        mockServer.dispatcher = mockDispatcher
-        mockServer.start(9000)
-
         mActivity = activityRule.activity
     }
 
@@ -67,6 +57,17 @@ class OptionsActivityTest {
     @Test
     @Throws (Exception::class)
     fun searchActivity_displaysWarningMessage_orNextActivity() {
+        val mockDispatcher: Dispatcher = object : Dispatcher() {
+            override fun dispatch(request: RecordedRequest): MockResponse {
+                Log.d("PATH", "PATH ${request.path}")
+                return MockResponse().setResponseCode(200)
+                    .setBody(AssetReaderUtil.asset(InstrumentationRegistry.getInstrumentation().context, "search_results.json"))
+            }
+        }
+
+        mockServer.dispatcher = mockDispatcher
+        mockServer.start(9000)
+
         onView(withId(R.id.action_search)).check(matches(isDisplayed()))
         onView(withId(R.id.action_search)).perform(click())
         onView(withId(R.id.editText_search_query)).check(matches(isDisplayed()))

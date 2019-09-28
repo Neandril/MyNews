@@ -26,7 +26,7 @@ ModelsTests {
             "abstract_description","1")
 
         assertEquals("testWebUrl@domain.com", docResult.webUrl)
-        assertEquals("title", docResult.headline)
+        assertEquals("title", docResult.snippet)
         assertEquals("test_lead_paragraph", docResult.leadParagraph)
         assertEquals("abstract_description", docResult.abstract)
         assertEquals("1", docResult.printPage)

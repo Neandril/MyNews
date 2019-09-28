@@ -1,5 +1,7 @@
 package com.neandril.mynews
 
+import android.content.SharedPreferences
+import android.graphics.Color
 import android.support.test.InstrumentationRegistry
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions
@@ -11,18 +13,26 @@ import android.support.test.rule.ActivityTestRule
 import android.util.Log
 import com.neandril.AssetReaderUtil
 import com.neandril.mynews.controllers.activities.MainActivity
+import com.neandril.mynews.utils.Helpers
 import com.neandril.mynews.views.adapter.DataAdapter
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okhttp3.mockwebserver.RecordedRequest
+import org.hamcrest.Matchers.allOf
 import org.junit.After
+import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 
 class ReadTest {
 
     private val mockServer = MockWebServer()
+
+    companion object {
+        private const val PREFS_FILENAME = "com.neandril.mynews.prefs" // Pref filename
+        private const val PREFS_URL = "prefs_url" // Url of article
+    }
 
     @Rule
     @JvmField
@@ -60,6 +70,23 @@ class ReadTest {
         onView(isRoot()).perform(ViewActions.pressBack())
         onView(withId(R.id.topStories_RecyclerView)).check(matches(isDisplayed()))
 
+/*
+        onView(withId(R.id.topStories_RecyclerView))
+            .check(matches(
+                hasDescendant(
+                    hasBackground(R.color.colorDescription)
+                )
+            ))
+*/
+
+        val pref = activityRule.activity.getSharedPreferences(PREFS_FILENAME,0)
+        val savedUrl = pref.getString(PREFS_URL, "{}")
+
+        assertEquals(
+            "[\"https://www.nytimes.com/2019/09/19/us/politics/intelligence-whistle-blower-complaint-trump.html\"]",
+            savedUrl)
+
+
         /**
         onView(withContentDescription("Navigate Up")).perform(click())
         onView(withId(R.id.topStories_RecyclerView)).check(matches(isDisplayed()))
@@ -70,4 +97,5 @@ class ReadTest {
     fun tearDown() {
         mockServer.shutdown()
     }
+
 }
