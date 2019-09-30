@@ -22,6 +22,7 @@ import okhttp3.mockwebserver.RecordedRequest
 import org.hamcrest.Matchers.allOf
 import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
@@ -40,15 +41,8 @@ class ReadTest {
         MainActivity::class.java, false, false
     )
 
-    @Test
-    fun shouldDisplayTopStoriesTab() {
-        activityRule.launchActivity(null)
-        onView(withId(R.id.topStories_RecyclerView)).check(matches(
-            isDisplayed()))
-    }
-
-    @Test
-    fun backButton() {
+    @Before
+    fun before() {
         val mockDispatcher: Dispatcher = object : Dispatcher() {
             override fun dispatch(request: RecordedRequest): MockResponse {
                 Log.d("PATH", "PATH ${request.path}")
@@ -57,10 +51,20 @@ class ReadTest {
             }
         }
 
-
         mockServer.dispatcher = mockDispatcher
         mockServer.start(9000)
 
+    }
+
+    @Test
+    fun shouldDisplayTopStoriesTab() {
+        activityRule.launchActivity(null)
+        onView(withId(R.id.topStories_RecyclerView)).check(matches(
+            isDisplayed()))
+    }
+
+    @Test
+    fun shouldUrlOfClickedItem_isCorrectlyStoredInSharedPreferences() {
         /** Run the activity */
         activityRule.launchActivity(null)
 
@@ -85,12 +89,6 @@ class ReadTest {
         assertEquals(
             "[\"https://www.nytimes.com/2019/09/19/us/politics/intelligence-whistle-blower-complaint-trump.html\"]",
             savedUrl)
-
-
-        /**
-        onView(withContentDescription("Navigate Up")).perform(click())
-        onView(withId(R.id.topStories_RecyclerView)).check(matches(isDisplayed()))
-        **/
     }
 
     @After
