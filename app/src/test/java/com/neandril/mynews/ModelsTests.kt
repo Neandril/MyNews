@@ -1,7 +1,7 @@
 package com.neandril.mynews
 
 import com.neandril.mynews.models.*
-import junit.framework.Assert.assertEquals
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**
