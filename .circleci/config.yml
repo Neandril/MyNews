@@ -51,8 +51,8 @@ jobs:
       - run:
           name: Configure environment
           command: |
-            echo 'export APK_PATH=`find . -path "*.apk" ! -path "*debug.apk" ! -path "*Test*.apk" -print -quit`' >> $BASH_ENV
-            echo 'export TEST_APK_PATH=`find "." "-path" "*Test*.apk" -print -quit`' >> $BASH_ENV
+            echo 'export APK_PATH=/app/build/outputs/apk/debug/app-debug.apk >> $BASH_ENV
+            echo 'export TEST_APK_PATH=/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk >> $BASH_ENV
       - run:
           name: Run UI Tests
           command: gcloud firebase test android run --type instrumentation --app ${APK_PATH} --test ${TEST_APK_PATH} --device model=Nexus6P,version=27,locale=en,orientation=portrait --timeout 30m
