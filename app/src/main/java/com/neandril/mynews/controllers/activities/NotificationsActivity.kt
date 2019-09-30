@@ -11,7 +11,6 @@ import android.view.View
 import android.widget.*
 import com.neandril.mynews.R
 import com.neandril.mynews.utils.AlarmReceiver
-import com.neandril.mynews.utils.paddingZero
 import kotlinx.android.synthetic.main.activity_options.*
 import java.util.*
 
@@ -22,16 +21,9 @@ class NotificationsActivity : AppCompatActivity() {
     companion object {
         const val PREFS_FILENAME = "com.neandril.mynews.prefs" // Pref filename
         const val PREFS_TOGGLE = "prefs_toggle" // Bool : position of the switch
-        const val PREFS_SECTIONS = "prefs_sections" // sesctions
+        const val PREFS_SECTIONS = "prefs_sections" // sections
         const val PREFS_QUERY = "prefs_query" // queryTerm
     }
-
-    /** Calendar config */
-    private val calendar = Calendar.getInstance()
-    private val year = calendar.get(Calendar.YEAR)
-    private val month = calendar.get(Calendar.MONTH)
-    private val day = calendar.get(Calendar.DAY_OF_MONTH)
-    private val mm = (month + 1).paddingZero()
 
     /** Variables */
     private lateinit var sectionName : String
@@ -84,8 +76,6 @@ class NotificationsActivity : AppCompatActivity() {
                         ?.putBoolean(PREFS_TOGGLE, true)
                         ?.apply()
 
-                    /** Start the worker */
-                    // startWorker()
                     startAlarm()
                 }
             } else {
@@ -98,7 +88,6 @@ class NotificationsActivity : AppCompatActivity() {
                     ?.putString(PREFS_SECTIONS, "")
                     ?.apply()
                 cancelAlarm()
-                // WorkManager.getInstance().cancelAllWorkByTag("MyTag")
             }
         }
     }
@@ -170,7 +159,6 @@ class NotificationsActivity : AppCompatActivity() {
                 ?.apply()
             startAlarm()
         }
-        // startWorker()
     }
 
     private fun startAlarm() {
@@ -180,10 +168,10 @@ class NotificationsActivity : AppCompatActivity() {
         calendar.set(Calendar.SECOND, 0)
         calendar.add(Calendar.DATE, 1)
 
-        val alarmManager = applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmReceiver::class.java)
 
-        val pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, 0)
+        val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
         alarmManager.setInexactRepeating(
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,
@@ -199,47 +187,4 @@ class NotificationsActivity : AppCompatActivity() {
 
         alarmManager.cancel(pendingIntent)
     }
-
-    /** Init and run the worker */
-    /**
-    private fun startWorker() {
-        // Initialize calendars
-        val currentDate = Calendar.getInstance()
-        val dueDate = Calendar.getInstance()
-
-        // Set Execution around 12:00:00 AM
-        dueDate.set(Calendar.HOUR_OF_DAY, 12)
-        dueDate.set(Calendar.MINUTE, 0)
-        dueDate.set(Calendar.SECOND, 0)
-
-        // Get the remaining time (in Ms) before next execution
-        if (dueDate.before(currentDate)) {
-            dueDate.add(Calendar.HOUR_OF_DAY, 24)
-        }
-        val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
-
-        // Set constraints : network needed
-        val constraints = Constraints.Builder()
-            .setRequiredNetworkType(NetworkType.CONNECTED)
-            .build()
-
-        // Build the worker
-        val dailyWorkRequest = OneTimeWorkRequestBuilder<MyWorker>()
-            .setConstraints(constraints)
-            .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
-            .addTag("MyTag")
-            .build()
-
-        WorkManager.getInstance().enqueue(dailyWorkRequest)
-
-        /**
-        val worker = PeriodicWorkRequest
-            .Builder(MyWorker::class.java, 1, TimeUnit.DAYS)
-            .addTag("MyTag")
-            .build()
-
-        WorkManager.getInstance().enqueue(worker)
-        **/
-    }
-    **/
 }
