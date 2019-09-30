@@ -37,6 +37,11 @@ jobs:
       - store_test_results:
           path: app/build/test-results
 
+      # Build APKs
+      - run:
+          name: Assemble APKs
+          command: ./gradlew assembleAndroidTest assemble
+
       # Configure Google gcloud SDK
       - run:
           name: Dump Google Cloud Credentials to file
