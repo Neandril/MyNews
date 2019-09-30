@@ -40,7 +40,7 @@ jobs:
       # Build APKs
       - run:
           name: Assemble APKs
-          command: ./gradlew assembleDebug assembleRelease
+          command: ./gradlew assembleAndroidTest assemble
 
       # Configure Google gcloud SDK
       - run:
