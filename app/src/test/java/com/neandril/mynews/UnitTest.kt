@@ -69,14 +69,6 @@ UnitTest {
         })
     }
 
-    @Test
-    fun getTestData() {
-        repo.getTestData(object : ArticleCallback {
-            override fun onResponse(model: NYTModel?) {
-                verify(repo, times(1).description("Test"))
-            }
-        })
-    }
 
     @Test
     fun search() {

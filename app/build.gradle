@@ -21,8 +21,7 @@ android {
         }
 
         release {
-            debuggable true
-            minifyEnabled true
+            // minifyEnabled true
             signingConfig signingConfigs.findByName("debug")
             buildConfigField "String", "API_URL", "\"https://api.nytimes.com/svc/\""
             buildConfigField "String", "API_KEY", "\"aavEEACpR0OtOS8i70CKwCsNJorFyfFf\""
