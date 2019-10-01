@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -91,7 +92,7 @@ class MostPopularFragment : Fragment(), MostPopularAdapter.ClickListener {
                 if (model == null) {
                     Toast.makeText(context, getString(R.string.checkConnection), Toast.LENGTH_SHORT).show()
                 } else {
-                    /** If at least one item is received, populate the list */
+                    // If at least one item is received, populate the list
                     loadingPanel.visibility = View.GONE
                     mAdapter.setData(model.mArticles)
                     onItemsLoadComplete()

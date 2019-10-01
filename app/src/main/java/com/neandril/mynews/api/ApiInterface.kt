@@ -27,7 +27,7 @@ interface ApiInterface {
     /**
      * MostPopular API
      */
-    @GET("mostpopular/v2/viewed/1.json")
+    @GET("mostpopular/v2/mostviewed/all-sections/7.json")
     fun mostPopular(): Call<NYTModel>
 
     /**
