@@ -49,6 +49,8 @@ class MockWebServerTests {
         /** Run the activity */
         activityRule.launchActivity(null)
 
+        Thread.sleep(2000)
+
         onView(withId(R.id.topStories_RecyclerView))
             .check(matches(
                 hasDescendant(
