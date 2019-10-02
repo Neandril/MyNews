@@ -15,6 +15,8 @@ class HelpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_help)
 
+        supportActionBar?.title = getString(R.string.help_title)
+
         /** For each strings found in the string array, create a new textview */
         for (s in resources.getStringArray(R.array.help_tips)) {
             val tv = TextView(this)
