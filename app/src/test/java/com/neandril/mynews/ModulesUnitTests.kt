@@ -10,7 +10,7 @@ import org.koin.test.check.checkModules
 class ModulesUnitTests : KoinTest {
 
     @Test
-    fun checkAppModule() {
+    fun applicationModule_shouldBeStarted() {
         startKoin {
             modules(applicationModule)
         }.checkModules()

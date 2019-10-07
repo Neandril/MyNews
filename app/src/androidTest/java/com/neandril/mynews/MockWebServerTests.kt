@@ -27,14 +27,14 @@ class MockWebServerTests {
     )
 
     @Test
-    fun shouldDisplayTopStoriesTab() {
+    fun onStart_shouldDisplayTopStoriesTab() {
         activityRule.launchActivity(null)
         onView(withId(R.id.topStories_RecyclerView)).check(matches(
             isDisplayed()))
     }
 
     @Test
-    fun shouldDisplayRequestIfResponseCodeSuccessful() {
+    fun reponseCode_successful_shouldDisplayRequest() {
         val mockDispatcher: Dispatcher = object : Dispatcher() {
             override fun dispatch(request: RecordedRequest): MockResponse {
                 Log.d("PATH", "PATH ${request.path}")

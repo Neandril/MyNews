@@ -56,7 +56,7 @@ class OptionsActivityTest {
      */
     @Test
     @Throws (Exception::class)
-    fun searchActivity_displaysWarningMessage_orNextActivity() {
+    fun searchActivity_inputsFilled_shouldDisplayNextActivityOrAnError() {
         val mockDispatcher: Dispatcher = object : Dispatcher() {
             override fun dispatch(request: RecordedRequest): MockResponse {
                 Log.d("PATH", "PATH ${request.path}")
@@ -88,16 +88,13 @@ class OptionsActivityTest {
             onView(withId(R.id.checkbox_politics)).perform(click())
             onView(withId(R.id.button_search)).perform(click())
         }
-
-        // Check nextActivity recyclerview
-        // onView(withId(R.id.results_recyclerView)).check(matches(isDisplayed()))
     }
 
     /**
      * Test NotificationsActivity behavior
      */
     @Test
-    fun notificationSwitch_displaysWarningMessage_orEnableNotifications() {
+    fun notificationSwitch_onEnabled_shouldDisplaysWarningMessageOrEnableNotifications() {
         Espresso.openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext())
         onView(withText(mActivity.getString(R.string.notifications))).perform(click())
         onView(withId(R.id.editText_search_query)).check(matches(isDisplayed()))

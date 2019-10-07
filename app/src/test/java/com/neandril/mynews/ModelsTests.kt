@@ -5,14 +5,14 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**
- * Theses test verify the return of the API call
+ * Theses test verify the models
  */
 
 class
 ModelsTests {
 
     @Test
-    fun articleModelTest() {
+    fun articles_shouldReturnArticlesDetails() {
         val article = Article("Title", "yyyy/MM/dd", "politics")
 
         assertEquals("Title", article.title)
@@ -21,7 +21,7 @@ ModelsTests {
     }
 
     @Test
-    fun docModelTest() {
+    fun doc_shouldReturnDocResults() {
         val docResult = Doc("testWebUrl@domain.com", "title", "test_lead_paragraph",
             "abstract_description","1")
 
@@ -33,7 +33,7 @@ ModelsTests {
     }
 
     @Test
-    fun multimediumModelTest() {
+    fun multimedium_shouldReturnThumbnailsProperty() {
         val multimedium = Multimedium(0, "xlarge", null, null, "image",
             "images/yyyy/mm/dd/folder/theImage.jpg",359,533, null)
 

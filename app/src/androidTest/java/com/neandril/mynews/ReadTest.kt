@@ -56,7 +56,7 @@ class ReadTest {
     }
 
     @Test
-    fun shouldDisplayTopStoriesTab() {
+    fun onStart_shouldDisplayTopStoriesTab() {
         activityRule.launchActivity(null)
         prefs = activityRule.activity.getSharedPreferences(PREFS_FILENAME, 0)
         onView(withId(R.id.topStories_RecyclerView)).check(matches(
@@ -64,7 +64,7 @@ class ReadTest {
     }
 
     @Test
-    fun shouldUrlOfClickedItem_isCorrectlyStoredInSharedPreferences() {
+    fun firstItemOfRecyclerView_onClick_shouldMemorizeItsUrl() {
         /** Run the activity */
         activityRule.launchActivity(null)
 
