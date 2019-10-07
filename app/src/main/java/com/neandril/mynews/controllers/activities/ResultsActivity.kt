@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.Toast
 import com.neandril.mynews.R
@@ -22,43 +21,39 @@ import org.koin.android.ext.android.inject
  */
 class ResultsActivity: AppCompatActivity(), ResultsAdapter.ClickListener {
 
+    /** Variables */
     private var dataList : MutableList<Doc> = mutableListOf()
-    lateinit var recyclerView: RecyclerView
+    private var query : ArrayList<String> = arrayListOf()
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var mAdapter: ResultsAdapter
 
+    /** Pagination booleans initializations */
     var isLastPage: Boolean = false
     var isLoading: Boolean = false
 
+    /** Inject the search repository */
     private val repository : SearchRepositoryInt by inject()
-
-    private val query : ArrayList<String> by lazy {
-        intent.getStringArrayListExtra("query")
-    }
-
-    /**
-     * Handle click on an result item
-     */
-    override fun onClick(doc: Doc) {
-        val docUrl = doc.webUrl
-        val docTitle = doc.sectionName
-
-        val intent = Intent(this, WebviewActivity::class.java)
-
-        intent.putExtra("url", docUrl)
-        intent.putExtra("title", docTitle)
-        startActivity(intent)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)
 
-        linearLayoutManager = LinearLayoutManager(this)
-        recyclerView = findViewById(R.id.results_recyclerView)
-        recyclerView.layoutManager = linearLayoutManager
+        query = intent.getStringArrayListExtra("query")
 
-        recyclerView.addOnScrollListener(object : PaginationScrollListener(linearLayoutManager) {
+        linearLayoutManager = LinearLayoutManager(this)
+        results_recyclerView.layoutManager = linearLayoutManager
+
+        configurePagination()
+
+        mAdapter = ResultsAdapter(dataList, this)
+        mAdapter.setOnItemClickListener(this)
+        results_recyclerView.adapter = mAdapter
+
+        getData()
+    }
+
+    private fun configurePagination() {
+        results_recyclerView.addOnScrollListener(object : PaginationScrollListener(linearLayoutManager) {
             override fun isLastPage(): Boolean {
                 return isLastPage
             }
@@ -73,12 +68,20 @@ class ResultsActivity: AppCompatActivity(), ResultsAdapter.ClickListener {
                 isLoading = true
             }
         })
+    }
 
-        mAdapter = ResultsAdapter(dataList, this)
-        mAdapter.setOnItemClickListener(this)
-        recyclerView.adapter = mAdapter
+    /**
+     * Handle click on an result item
+     */
+    override fun onClick(doc: Doc) {
+        val docUrl = doc.webUrl
+        val docTitle = doc.sectionName
 
-        getData()
+        val intent = Intent(this, WebviewActivity::class.java)
+
+        intent.putExtra("url", docUrl)
+        intent.putExtra("title", docTitle)
+        startActivity(intent)
     }
 
     /**

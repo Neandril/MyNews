@@ -56,7 +56,7 @@ class DataAdapter(private var dataList: MutableList<Article>, private val contex
         private var descTextView: TextView = itemLayoutView.findViewById(R.id.description)
         private var publishedDate: TextView = itemLayoutView.findViewById(R.id.date)
         private var mLayout: LinearLayout = itemLayoutView.findViewById(R.id.linear_layout)
-        var thumbnail: ImageView = itemLayoutView.findViewById(R.id.thumbnail)
+        private var thumbnail: ImageView = itemLayoutView.findViewById(R.id.thumbnail)
 
         // Click event
         override fun onClick(v: View) {
@@ -90,7 +90,7 @@ class DataAdapter(private var dataList: MutableList<Article>, private val contex
             // Retrieve news datas
             titleTextView.text = section
             descTextView.text = dataModel.title
-            publishedDate.text = context.getString(R.string.dateformat, strPublishedDate?.substring(8,10), strPublishedDate?.substring(5,7), strPublishedDate?.substring(0,4)) //TODO: Jodatime
+            publishedDate.text = context.getString(R.string.dateformat, strPublishedDate?.substring(8,10), strPublishedDate?.substring(5,7), strPublishedDate?.substring(0,4))
             mLayout.setBackgroundColor(Color.TRANSPARENT)
 
             if (Helpers.retrieveData(context).contains(dataModel.url.toString())) {

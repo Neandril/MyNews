@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,25 +23,15 @@ import org.koin.android.ext.android.inject
 
 class MostPopularFragment : Fragment(), MostPopularAdapter.ClickListener {
 
-    override fun onClick(articles: Article) {
-        val articleUrl = articles.url
-        val articleTitle = articles.title
-
-        val intent = Intent(context, WebviewActivity::class.java)
-
-        intent.putExtra("url", articleUrl)
-        intent.putExtra("title", articleTitle)
-        activity?.startActivity(intent)
-    }
-
     /** Array of news */
     private var dataList: MutableList<Article> = mutableListOf()
     /** Defining the RecyclerView */
-    lateinit var recyclerView: RecyclerView
-    lateinit var loadingPanel: RelativeLayout
-    lateinit var mAdapter: MostPopularAdapter
-    lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var loadingPanel: RelativeLayout
+    private lateinit var mAdapter: MostPopularAdapter
+    private lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
 
+    /** Inject article repository */
     private val repository : ArticleRepositoryInt by inject()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -50,12 +39,14 @@ class MostPopularFragment : Fragment(), MostPopularAdapter.ClickListener {
 
         loadingPanel = view!!.findViewById(R.id.loadingPanel)
         loadingPanel.visibility = View.VISIBLE
+
         mSwipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
+
+        mAdapter = MostPopularAdapter(dataList, activity!!.applicationContext)
+        mAdapter.setOnItemClickListener(this)
 
         recyclerView = view.findViewById(R.id.mostPopular_RecyclerView)
         recyclerView.setHasFixedSize(true) // For improve performances
-        mAdapter = MostPopularAdapter(dataList, activity!!.applicationContext)
-        mAdapter.setOnItemClickListener(this)
         recyclerView.adapter = mAdapter
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
@@ -67,6 +58,17 @@ class MostPopularFragment : Fragment(), MostPopularAdapter.ClickListener {
         }
 
         return view
+    }
+
+    override fun onClick(articles: Article) {
+        val articleUrl = articles.url
+        val articleTitle = articles.title
+
+        val intent = Intent(context, WebviewActivity::class.java)
+
+        intent.putExtra("url", articleUrl)
+        intent.putExtra("title", articleTitle)
+        activity?.startActivity(intent)
     }
 
     /**

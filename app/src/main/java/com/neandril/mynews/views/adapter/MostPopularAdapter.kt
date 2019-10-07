@@ -13,8 +13,6 @@ import com.bumptech.glide.Glide
 import com.neandril.mynews.R
 import com.neandril.mynews.models.Article
 import com.neandril.mynews.utils.Helpers
-import java.lang.Exception
-import java.util.*
 
 
 class MostPopularAdapter(private var dataList: MutableList<Article>, private val context: Context) : RecyclerView.Adapter<MostPopularAdapter.ViewHolder>() {

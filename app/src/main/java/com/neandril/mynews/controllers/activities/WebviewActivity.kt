@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.webkit.WebView
 import com.neandril.mynews.R
+import kotlinx.android.synthetic.main.activity_webview.*
 
 /**
  * Webview Activity
  */
 class WebviewActivity : AppCompatActivity() {
-
-    private var mWebview : WebView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +20,7 @@ class WebviewActivity : AppCompatActivity() {
 
         supportActionBar?.title = title
 
-        mWebview = findViewById(R.id.webview)
-
-        mWebview?.loadUrl(url)
+        webview.loadUrl(url)
     }
 
     /**

@@ -1,6 +1,5 @@
 package com.neandril.mynews.api
 
-import android.os.Build
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.neandril.mynews.BuildConfig

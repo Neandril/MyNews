@@ -1,10 +1,9 @@
 package com.neandril.mynews.api
 
-import com.bumptech.glide.load.engine.bitmap_recycle.IntegerArrayAdapter
 import com.neandril.mynews.models.NYTModel
 import com.neandril.mynews.models.NYTSearchResultsModel
-import retrofit2.http.GET
 import retrofit2.Call
+import retrofit2.http.GET
 import retrofit2.http.Query
 
 /**

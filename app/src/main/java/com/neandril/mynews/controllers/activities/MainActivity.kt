@@ -1,13 +1,11 @@
 package com.neandril.mynews.controllers.activities
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.neandril.mynews.R
@@ -15,27 +13,20 @@ import com.neandril.mynews.views.SectionsPagerAdapter
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        const val PREFS_FILENAME = "com.neandril.mynews.prefs"
-        const val PREFS_TOGGLE = "prefs_toggle"
-    }
-
-    var prefs: SharedPreferences? = null
-
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
+
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = getString(R.string.app_name)
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         val viewPager: ViewPager = findViewById(R.id.view_pager)
-        viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.tabs)
-        tabs.setupWithViewPager(viewPager)
 
-        prefs = this.getSharedPreferences(PREFS_FILENAME, 0)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = getString(R.string.app_name)
+
+        viewPager.adapter = sectionsPagerAdapter
+        tabs.setupWithViewPager(viewPager)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -14,7 +14,6 @@ import com.neandril.mynews.utils.AlarmReceiver
 import kotlinx.android.synthetic.main.activity_options.*
 import java.util.*
 
-
 class NotificationsActivity : AppCompatActivity() {
 
     /** Preparing consts */
@@ -28,8 +27,6 @@ class NotificationsActivity : AppCompatActivity() {
     /** Variables */
     private lateinit var sectionName : String
     private lateinit var queryTerm : String
-    private lateinit var firstCheckboxesLayout : LinearLayout
-    private lateinit var secondCheckboxesLayout : LinearLayout
 
     /** Initialize SharedPreferences */
     private var prefs: SharedPreferences? = null
@@ -38,57 +35,58 @@ class NotificationsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_options)
 
-        supportActionBar?.title = getString(R.string.notifications)
+        updateUi()
 
         prefs = this.getSharedPreferences(PREFS_FILENAME, 0) // Get prefs file
 
-        /** Declaring UI Components */
-        firstCheckboxesLayout = findViewById(R.id.first_checkboxes)
-        secondCheckboxesLayout = findViewById(R.id.second_checkboxes)
-        val searchBtn = findViewById<Button>(R.id.button_search)
-        val editTextQueryTerm = findViewById<EditText>(R.id.editText_search_query)
-        val dates = findViewById<LinearLayout>(R.id.layout_dates)
-        val switch = findViewById<Switch>(R.id.notifications_switch)
-        searchBtn.visibility = View.GONE
-        dates.visibility = View.GONE
-
         /** Get the queryTerm */
-        queryTerm = editTextQueryTerm.text.toString()
+        queryTerm = editText_search_query.text.toString()
 
         /** Configure values according to prefs */
-        switch.isChecked = prefs?.getBoolean(PREFS_TOGGLE, false) ?: true
-        editTextQueryTerm.setText(prefs?.getString(PREFS_QUERY, ""))
+        notifications_switch.isChecked = prefs?.getBoolean(PREFS_TOGGLE, false) ?: true
+        editText_search_query.setText(prefs?.getString(PREFS_QUERY, ""))
         updateCheckboxes()
 
         /**
          * Manage switch position
          */
-        switch.setOnCheckedChangeListener { _, isChecked ->
+        notifications_switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                if ((editTextQueryTerm.text.toString() == "") || (getCheckedSections() == "")) {
-                    Toast.makeText(this, R.string.notificationsFillTheFields, Toast.LENGTH_SHORT).show()
-                    switch.isChecked = false
-                } else {
-                    Toast.makeText(this, R.string.notificationsEnabled, Toast.LENGTH_SHORT).show()
-                    /** Apply the switch position */
-                    val editor = prefs?.edit()
-                    editor
-                        ?.putBoolean(PREFS_TOGGLE, true)
-                        ?.apply()
-
-                    startAlarm()
-                }
+                switchChecked(true)
             } else {
-                Toast.makeText(this, R.string.notificationsDisabled, Toast.LENGTH_SHORT).show()
+                switchChecked(false)
+            }
+        }
+    }
 
+    /**
+     * Switch Management
+     */
+    private fun switchChecked(value: Boolean) {
+        if (value) {
+            if ((editText_search_query.text.toString() == "") || (getCheckedSections() == "")) {
+                Toast.makeText(this, R.string.notificationsFillTheFields, Toast.LENGTH_SHORT).show()
+                notifications_switch.isChecked = false
+            } else {
+                Toast.makeText(this, R.string.notificationsEnabled, Toast.LENGTH_SHORT).show()
+                /** Apply the switch position */
                 val editor = prefs?.edit()
                 editor
-                    ?.putBoolean(PREFS_TOGGLE, false)
-                    ?.putString(PREFS_QUERY, "")
-                    ?.putString(PREFS_SECTIONS, "")
+                    ?.putBoolean(PREFS_TOGGLE, true)
                     ?.apply()
-                cancelAlarm()
+
+                startAlarm()
             }
+        } else {
+            Toast.makeText(this, R.string.notificationsDisabled, Toast.LENGTH_SHORT).show()
+
+            val editor = prefs?.edit()
+            editor
+                ?.putBoolean(PREFS_TOGGLE, false)
+                ?.putString(PREFS_QUERY, "")
+                ?.putString(PREFS_SECTIONS, "")
+                ?.apply()
+            cancelAlarm()
         }
     }
 
@@ -98,23 +96,18 @@ class NotificationsActivity : AppCompatActivity() {
     private fun getCheckedSections() : String {
         sectionName = ""
 
-        for (i in 0 until firstCheckboxesLayout.childCount) {
-            val v = firstCheckboxesLayout.getChildAt(i)
-            if (v is CheckBox) {
-                if (v.isChecked) {
-                    sectionName += v.text.toString() + " "
-                }
-            }
-        }
+        (0 until first_checkboxes.childCount)
+            .map { first_checkboxes.getChildAt(it) }
+            .filterIsInstance<CheckBox>()
+            .filter { it.isChecked }
+            .forEach { sectionName += it.text.toString() + " " }
 
-        for (i in 0 until secondCheckboxesLayout.childCount) {
-            val v = secondCheckboxesLayout.getChildAt(i)
-            if (v is CheckBox) {
-                if (v.isChecked) {
-                    sectionName += v.text.toString() + " "
-                }
-            }
-        }
+        (0 until second_checkboxes.childCount)
+            .map { second_checkboxes.getChildAt(it) }
+            .filterIsInstance<CheckBox>()
+            .filter { it.isChecked }
+            .forEach { sectionName += it.text.toString() + " " }
+
         return sectionName
     }
 
@@ -126,23 +119,18 @@ class NotificationsActivity : AppCompatActivity() {
         val s1 = s?.split(" ")
         s as CharSequence
 
-        for (i in 0 until firstCheckboxesLayout.childCount) {
-            val v = firstCheckboxesLayout.getChildAt(i)
-            if (v is CheckBox) {
-                if (s1?.contains(v.text) == true) {
-                    v.isChecked = true
-                }
-            }
-        }
+        (0 until first_checkboxes.childCount)
+            .map { first_checkboxes.getChildAt(it) }
+            .filterIsInstance<CheckBox>()
+            .filter { s1?.contains(it.text) == true }
+            .forEach { it.isChecked = true }
 
-        for (i in 0 until secondCheckboxesLayout.childCount) {
-            val v = secondCheckboxesLayout.getChildAt(i)
-            if (v is CheckBox) {
-                if (s1?.contains(v.text) == true) {
-                    v.isChecked = true
-                }
-            }
-        }
+        (0 until second_checkboxes.childCount)
+            .asSequence()
+            .map { second_checkboxes.getChildAt(it) }
+            .filterIsInstance<CheckBox>()
+            .filter { s1?.contains(it.text) == true }
+            .forEach { it.isChecked = true }
     }
 
     /**
@@ -161,6 +149,9 @@ class NotificationsActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Set up the alarm
+     */
     private fun startAlarm() {
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.HOUR_OF_DAY, 12)
@@ -180,11 +171,25 @@ class NotificationsActivity : AppCompatActivity() {
         )
     }
 
+    /**
+     * Cancel the alarm
+     */
     private fun cancelAlarm() {
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(applicationContext, AlarmReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, 0)
 
         alarmManager.cancel(pendingIntent)
+    }
+
+    /**
+     * Update UI components
+     */
+    private fun updateUi() {
+        button_search.visibility = View.GONE
+        layout_dates.visibility = View.GONE
+
+        /** Toolbar title */
+        supportActionBar?.title = getString(R.string.notifications)
     }
 }

@@ -4,11 +4,11 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.*
 import com.neandril.mynews.R
 import com.neandril.mynews.utils.paddingZero
+import kotlinx.android.synthetic.main.activity_options.*
 import java.util.*
 
 /**
@@ -16,51 +16,37 @@ import java.util.*
  */
 class SearchActivity : AppCompatActivity() {
 
+    /** Calendar config */
+    private val calendar = Calendar.getInstance()
+    private val year = calendar.get(Calendar.YEAR)
+    private val month = calendar.get(Calendar.MONTH)
+    private val day = calendar.get(Calendar.DAY_OF_MONTH)
+    private val mm = (month + 1).paddingZero() // Because months are zero-indexed
+
+    /** Dates initializations */
+    private var bDate = "$year$mm${day.paddingZero()}" // Default beginDate (set to today)
+    private var eDate = "$year$mm${day.paddingZero()}" // Default endDate (set to today)
+
     /** Variables */
     private var mQueryItems : ArrayList<String> = arrayListOf() // Array of query items
-    private lateinit var bDate : String
-    private lateinit var eDate : String
     private lateinit var sectionName : String
-    private lateinit var firstCheckboxesLayout : LinearLayout
-    private lateinit var secondCheckboxesLayout : LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_options)
 
-        /** UI Config */
-        val separator = findViewById<View>(R.id.separator)
-        val searchQuery = findViewById<EditText>(R.id.editText_search_query)
-        val notifs = findViewById<LinearLayout>(R.id.layout_notifications)
-        val beginDate = findViewById<TextView>(R.id.begin_date)
-        val endDate = findViewById<TextView>(R.id.end_date)
-        val searchButton = findViewById<Button>(com.neandril.mynews.R.id.button_search)
+        updateUi()
+        datePickersListeners()
+        executeSearchRequest()
+    }
 
-        /** Calendar config */
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-        val mm = (month + 1).paddingZero()
-        bDate = "$year$mm${day.paddingZero()}" // Default beginDate (set to today)
-        eDate = "$year$mm${day.paddingZero()}" // Default endDate (set to today)
-
-        firstCheckboxesLayout = findViewById(R.id.first_checkboxes)
-        secondCheckboxesLayout = findViewById(R.id.second_checkboxes)
-
-        /** Hide controls that aren't in common with notification's activity */
-        separator.visibility = View.GONE
-        notifs.visibility = View.GONE
-
-        /** Title */
-        supportActionBar?.title = getString(R.string.search_articles)
-
+    private fun datePickersListeners() {
         /** Display datePicker for beginDate */
-        beginDate.setOnClickListener {
+        begin_date.setOnClickListener {
             val datePickerDialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener
             { _, year, month, dayOfMonth ->
                 val pickedMonth = (month + 1).paddingZero()
-                beginDate.text = getString(R.string.datesTexts, dayOfMonth.paddingZero(), pickedMonth, year)
+                begin_date.text = getString(R.string.datesTexts, dayOfMonth.paddingZero(), pickedMonth, year)
                 bDate = "$year$pickedMonth${dayOfMonth.paddingZero()}"
 
             }, year, month, day)
@@ -68,23 +54,25 @@ class SearchActivity : AppCompatActivity() {
         }
 
         /** Display datePicker for endDate */
-        endDate.setOnClickListener {
+        end_date.setOnClickListener {
             val datePickerDialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener
             { _, year, month, dayOfMonth ->
                 val pickedMonth = (month + 1).paddingZero()
-                endDate.text = getString(R.string.datesTexts, dayOfMonth.paddingZero(), pickedMonth, year)
+                end_date.text = getString(R.string.datesTexts, dayOfMonth.paddingZero(), pickedMonth, year)
                 eDate = "$year$pickedMonth${dayOfMonth.paddingZero()}"
 
             }, year, month, day)
             datePickerDialog.show()
         }
+    }
 
+    private fun executeSearchRequest() {
         /** Search Button */
-        searchButton.setOnClickListener {
+        button_search.setOnClickListener {
             /** Clearing the query list each time */
             mQueryItems.clear()
 
-            val query = searchQuery.text.toString()
+            val query = editText_search_query.text.toString()
             val intent = Intent(this, ResultsActivity::class.java)
 
             // Retrieve sections
@@ -99,7 +87,6 @@ class SearchActivity : AppCompatActivity() {
                     } else {
                         // Replace spaces by comma for query term
                         mQueryItems.addAll(listOf(query.replace(" ", ","), bDate, eDate, sectionName, "0"))
-                        Log.e("Search", "Query : $query")
                         intent.putStringArrayListExtra("query", mQueryItems)
                         startActivity(intent)
                     }
@@ -116,23 +103,17 @@ class SearchActivity : AppCompatActivity() {
     private fun getCheckedSections() : String {
         sectionName = ""
 
-        for (i in 0 until firstCheckboxesLayout.childCount) {
-            val v = firstCheckboxesLayout.getChildAt(i)
-            if (v is CheckBox) {
-                if (v.isChecked) {
-                    sectionName += v.text.toString() + ","
-                }
-            }
-        }
+        (0 until first_checkboxes.childCount)
+            .map { first_checkboxes.getChildAt(it) }
+            .filterIsInstance<CheckBox>()
+            .filter { it.isChecked }
+            .forEach { sectionName += it.text.toString() + "," }
 
-        for (i in 0 until secondCheckboxesLayout.childCount) {
-            val v = secondCheckboxesLayout.getChildAt(i)
-            if (v is CheckBox) {
-                if (v.isChecked) {
-                    sectionName += v.text.toString() + ","
-                }
-            }
-        }
+        (0 until second_checkboxes.childCount)
+            .map { second_checkboxes.getChildAt(it) }
+            .filterIsInstance<CheckBox>()
+            .filter { it.isChecked }
+            .forEach { sectionName += it.text.toString() + "," }
         return sectionName
     }
 
@@ -144,5 +125,14 @@ class SearchActivity : AppCompatActivity() {
             return false
         }
         return true
+    }
+
+    private fun updateUi() {
+        /** Hide controls that aren't in common with notification's activity */
+        separator.visibility = View.GONE
+        layout_notifications.visibility = View.GONE
+
+        /** Title */
+        supportActionBar?.title = getString(R.string.search_articles)
     }
 }

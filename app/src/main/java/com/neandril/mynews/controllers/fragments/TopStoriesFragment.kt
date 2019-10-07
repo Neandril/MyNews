@@ -19,30 +19,20 @@ import com.neandril.mynews.models.ArticleRepositoryInt
 import com.neandril.mynews.models.NYTModel
 import com.neandril.mynews.utils.inflate
 import com.neandril.mynews.views.adapter.DataAdapter
+import kotlinx.android.synthetic.main.fragment_topstories.*
 import org.koin.android.ext.android.inject
-import org.koin.core.qualifier.named
 
 class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
-
-    override fun onClick(articles: Article) {
-        val articleUrl = articles.url
-        val articleTitle = articles.title
-
-        val intent = Intent(context, WebviewActivity::class.java)
-
-        intent.putExtra("url", articleUrl)
-        intent.putExtra("title", articleTitle)
-        activity?.startActivity(intent)
-    }
 
     /** Array of news */
     private var dataList : MutableList<Article> = mutableListOf()
     /** Defining the RecyclerView */
-    lateinit var recyclerView: RecyclerView
-    lateinit var loadingPanel: RelativeLayout
-    lateinit var mAdapter: DataAdapter
-    lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var loadingPanel: RelativeLayout
+    private lateinit var mAdapter: DataAdapter
+    private lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
 
+    /** Inject article repository */
     private val repository : ArticleRepositoryInt by inject()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -50,12 +40,14 @@ class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
 
         loadingPanel = view!!.findViewById(R.id.loadingPanel)
         loadingPanel.visibility = View.VISIBLE
+
         mSwipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
+
+        mAdapter = DataAdapter(dataList, activity!!.applicationContext)
+        mAdapter.setOnItemClickListener(this)
 
         recyclerView = view.findViewById(R.id.topStories_RecyclerView)
         recyclerView.setHasFixedSize(true) // For improve performances
-        mAdapter = DataAdapter(dataList, activity!!.applicationContext)
-        mAdapter.setOnItemClickListener(this)
         recyclerView.adapter = mAdapter
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
@@ -69,6 +61,17 @@ class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
         return view
     }
 
+    override fun onClick(articles: Article) {
+        val articleUrl = articles.url
+        val articleTitle = articles.title
+
+        val intent = Intent(context, WebviewActivity::class.java)
+
+        intent.putExtra("url", articleUrl)
+        intent.putExtra("title", articleTitle)
+        activity?.startActivity(intent)
+    }
+
     /**
      * When resumed (for example when went back after reading an article),
      * the list is refreshed
@@ -80,7 +83,7 @@ class TopStoriesFragment : Fragment(), DataAdapter.ClickListener {
 
     fun onItemsLoadComplete() {
         // Stop refresh animation
-        mSwipeRefreshLayout.isRefreshing = false
+        swipeRefreshLayout.isRefreshing = false
     }
 
     /**

@@ -7,7 +7,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.support.v4.app.NotificationCompat
-import android.util.Log
 import com.neandril.mynews.R
 import com.neandril.mynews.api.ApiCall
 import com.neandril.mynews.controllers.activities.NotificationsActivity
@@ -41,7 +40,6 @@ class AlarmReceiver : BroadcastReceiver() {
         NotificationRepositoryImplement(ApiCall.getInstance())
     }
 
-
     override fun onReceive(context: Context?, intent: Intent?) {
         bDate = "$year$mm${day.paddingZero()}" // Default beginDate (set to today)
         eDate = "$year$mm${day.paddingZero()}" // Default endDate (set to today)
@@ -51,17 +49,13 @@ class AlarmReceiver : BroadcastReceiver() {
         val section = prefs?.getString(PREFS_SECTION, "")
         mQueryItems.addAll(listOf(query.toString(), bDate, eDate, section.toString(), "0"))
 
-        Log.e("Worker", "Query : $mQueryItems")
-
         repository.getNotifsData(mQueryItems, object : NotifsCallback {
             /** Proceed */
             override fun onResponse(model: NYTSearchResultsModel?) {
 
                 if (model?.results?.docs?.isNullOrEmpty() == true) {
-                    Log.e("Worker", "No result : " + (model.results))
                     sendNotification(context,"My News", context?.getString(R.string.notifsNoResultFound).toString())
                 } else {
-                    Log.e("Worker", "Result found : " + model?.results?.docs?.size)
                     sendNotification(context,"My News", context?.getString(R.string.notifsResultFound, model?.results?.docs?.size).toString())
                 }
             }
@@ -88,5 +82,4 @@ class AlarmReceiver : BroadcastReceiver() {
 
         notificationManager.notify(1, notification.build())
     }
-
 }

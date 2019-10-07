@@ -2,7 +2,6 @@ package com.neandril.mynews.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -23,8 +22,6 @@ object Helpers {
         val json = gson.toJson(url)
         editor?.putString(PREFS_URL, json)
         editor?.apply()
-
-        Log.e("saveData", "saved : $json")
     }
 
     /**
@@ -44,7 +41,6 @@ object Helpers {
             }.type
             gson.fromJson(json, type)
         }
-        Log.e("retrieveData", "retrieved : $json")
         return urlArrayList
     }
 }

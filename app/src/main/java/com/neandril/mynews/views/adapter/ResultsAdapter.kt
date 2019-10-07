@@ -45,7 +45,7 @@ class ResultsAdapter(private var dataList: MutableList<Doc>, private val context
         private var titleTextView: TextView = itemLayoutView.findViewById(R.id.title)
         private var descTextView: TextView = itemLayoutView.findViewById(R.id.description)
         private var publishedDate: TextView = itemLayoutView.findViewById(R.id.date)
-        var thumbnail: ImageView = itemLayoutView.findViewById(R.id.thumbnail)
+        private var thumbnail: ImageView = itemLayoutView.findViewById(R.id.thumbnail)
 
         // Click event
         override fun onClick(v: View) {
@@ -66,7 +66,7 @@ class ResultsAdapter(private var dataList: MutableList<Doc>, private val context
 
             titleTextView.text = section
             descTextView.text = snippet
-            publishedDate.text = context.getString(R.string.dateformat, strPublishedDate?.substring(8,10), strPublishedDate?.substring(5,7), strPublishedDate?.substring(0,4)) //TODO: Jodatime
+            publishedDate.text = context.getString(R.string.dateformat, strPublishedDate?.substring(8,10), strPublishedDate?.substring(5,7), strPublishedDate?.substring(0,4))
 
             // If an image is found, "glide it"
             if (dataModel.multimedia != null && dataModel.multimedia!!.isNotEmpty()) {
