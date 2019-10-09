@@ -1,8 +1,4 @@
 <resources>
-    <!-- New York Times API Key -->
-    <!-- TODO To delete -->
-    <string name="apikey">aavEEACpR0OtOS8i70CKwCsNJorFyfFf</string>
-
     <string name="app_name">My News</string>
     <string name="tab_top_stories">TOP STORIES</string>
     <string name="tab_most_popular">MOST POPULAR</string>
@@ -42,7 +38,7 @@
     <string name="notificationsFillTheFields">Please fill the fields</string>
     <string name="notificationsEnabled">Notifications are enabled</string>
     <string name="notificationsDisabled">Notifications are disabled</string>
-    <string name="notifsResultFound">%1$d results are found corresponding your criterias</string>
+    <string name="notifsResultFound">%1$d results are found corresponding your criteria</string>
     <string name="notifsNoResultFound">No result found</string>
 
     <!-- Error codes in researchs -->
