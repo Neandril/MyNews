@@ -6,8 +6,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-private const val CODE_401 = "Unauthorized"
-private const val CODE_429 = "Too many requests"
 private const val ON_FAILURE = "An error happened"
 
 interface ArticleRepositoryInt {
@@ -92,10 +90,8 @@ class SearchRepositoryImplement(private val service: ApiInterface?): SearchRepos
                 when {
                     response?.code() == 200 -> // Success
                         callback.onResponse(response.body())
-                    response?.code() == 401 -> // Unauthorized
-                        callback.onError(CODE_401)
-                    response?.code() == 429 -> // Too many requests
-                        callback.onError(CODE_429)
+                    response?.code() != 200 -> // Error
+                        callback.onError(ON_FAILURE)
                 }
             }
 
