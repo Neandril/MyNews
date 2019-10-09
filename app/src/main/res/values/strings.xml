@@ -41,11 +41,6 @@
     <string name="notifsResultFound">%1$d results are found corresponding your criteria</string>
     <string name="notifsNoResultFound">No result found</string>
 
-    <!-- Error codes in researchs -->
-    <string name="code401">Unauthorized</string>
-    <string name="code429">Too many requests</string>
-    <string name="onFailure">An error happened</string>
-
     <!-- About Activity -->
     <string name="about_title">About</string>
     <string name="about_subject">Subject : &#160;</string>

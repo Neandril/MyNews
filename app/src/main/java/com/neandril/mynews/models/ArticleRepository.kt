@@ -1,12 +1,14 @@
 package com.neandril.mynews.models
 
-import android.content.res.Resources
 import android.util.Log
-import com.neandril.mynews.R
 import com.neandril.mynews.api.ApiInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
+private const val CODE_401 = "Unauthorized"
+private const val CODE_429 = "Too many requests"
+private const val ON_FAILURE = "An error happened"
 
 interface ArticleRepositoryInt {
     fun getTopStoriesData(callback: ArticleCallback)
@@ -91,15 +93,15 @@ class SearchRepositoryImplement(private val service: ApiInterface?): SearchRepos
                     response?.code() == 200 -> // Success
                         callback.onResponse(response.body())
                     response?.code() == 401 -> // Unauthorized
-                        callback.onError(Resources.getSystem().getString(R.string.code401))
+                        callback.onError(CODE_401)
                     response?.code() == 429 -> // Too many requests
-                        callback.onError(Resources.getSystem().getString(R.string.code429))
+                        callback.onError(CODE_429)
                 }
             }
 
             /** Handle failure */
             override fun onFailure(call: Call<NYTSearchResultsModel>?, t: Throwable?) {
-                callback.onError(t?.message ?: Resources.getSystem().getString(R.string.onFailure))
+                callback.onError(t?.message ?: ON_FAILURE)
             }
         })
     }
