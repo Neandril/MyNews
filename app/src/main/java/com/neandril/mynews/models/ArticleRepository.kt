@@ -87,11 +87,10 @@ class SearchRepositoryImplement(private val service: ApiInterface?): SearchRepos
         service?.articleSearch(query[0], query[1], query[2],query[3],"news_desk", query[4].toInt(), "newest")?.enqueue(object : Callback<NYTSearchResultsModel> {
             /** Handle responses */
             override fun onResponse(call: Call<NYTSearchResultsModel>?, response: Response<NYTSearchResultsModel>?) {
-                when {
-                    response?.code() == 200 -> // Success
-                        callback.onResponse(response.body())
-                    response?.code() != 200 -> // Error
-                        callback.onError(ON_FAILURE)
+                if (response?.isSuccessful == true) {
+                    callback.onResponse(response.body())
+                } else {
+                    callback.onError(ON_FAILURE)
                 }
             }
 
